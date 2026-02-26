@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 
 interface AnimatedLogoProps {
-  size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
 
 type SunExpression = 'calm' | 'thoughtful' | 'frowning' | 'eyes-moving';
 
-export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLogoProps) {
+export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
   const [sunExpression, setSunExpression] = useState<SunExpression>('calm');
 
   // Auto-cycle sun expression every 3 seconds
@@ -22,18 +21,10 @@ export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLo
     return () => clearInterval(interval);
   }, []);
 
-  const sizeMap = {
-    sm: 'w-32 h-32',
-    md: 'w-full h-96',
-    lg: 'w-full h-screen',
-  };
-
   return (
-    <div
-      className={`relative flex items-center justify-center ${sizeMap[size]} ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden`}
-    >
+    <div className={`relative w-full h-96 ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center`}>
       <svg
-        viewBox="0 0 1200 600"
+        viewBox="0 0 1600 500"
         className="w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
         style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }}
@@ -41,7 +32,7 @@ export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLo
         <defs>
           <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
             <stop offset="0%" style={{ stopColor: '#FFE066', stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: '#FFD700', stopOpacity: 0.9 }} />
+            <stop offset="100%" style={{ stopColor: '#D4AF37', stopOpacity: 0.9 }} />
           </radialGradient>
           <filter id="sunGlow">
             <feGaussianBlur stdDeviation="2" result="coloredBlur" />
@@ -50,75 +41,48 @@ export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLo
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-
-          {/* Animation for bus flight */}
-          <style>{`
-            @keyframes busFlying {
-              0% {
-                transform: translateX(-100px) scaleX(1);
-              }
-              50% {
-                transform: translateX(400px) scaleX(1);
-              }
-              100% {
-                transform: translateX(-100px) scaleX(-1);
-              }
-            }
-          `}</style>
         </defs>
 
-        {/* Greek meander pattern top border */}
-        <g stroke="#B8860B" strokeWidth="2" fill="none">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <g key={`meander-${i}`}>
-              <path d={`M ${i * 100 + 20} 15 L ${i * 100 + 35} 15 L ${i * 100 + 35} 30 L ${i * 100 + 20} 30`} />
-            </g>
-          ))}
-        </g>
-
-        {/* Sun rays with rotation animation */}
+        {/* Sun with rays - top right */}
         <g id="sunRays">
           {Array.from({ length: 24 }).map((_, i) => (
             <line
               key={`ray-${i}`}
-              x1="900"
-              y1="50"
-              x2="900"
-              y2="20"
+              x1="1350"
+              y1="80"
+              x2="1350"
+              y2="40"
               stroke="#D4AF37"
-              strokeWidth="2"
-              opacity="0.7"
-              transform={`rotate(${i * 15} 900 150)`}
+              strokeWidth="3"
+              opacity="0.8"
+              transform={`rotate(${i * 15} 1350 150)`}
             />
           ))}
           <animateTransform
             attributeName="transform"
             attributeType="XML"
             type="rotate"
-            from="0 900 150"
-            to="360 900 150"
+            from="0 1350 150"
+            to="360 1350 150"
             dur="20s"
             repeatCount="indefinite"
           />
         </g>
 
-        {/* Sun circle with gradient effect */}
-        <circle cx="900" cy="150" r="60" fill="url(#sunGradient)" filter="url(#sunGlow)" />
+        {/* Sun circle */}
+        <circle cx="1350" cy="150" r="70" fill="url(#sunGradient)" filter="url(#sunGlow)" />
 
         {/* Sun face - calm */}
         {sunExpression === 'calm' && (
           <>
-            {/* Left eye */}
-            <circle cx="880" cy="135" r="8" fill="#8B6914" />
-            <circle cx="881" cy="134" r="3" fill="white" />
-            {/* Right eye */}
-            <circle cx="920" cy="135" r="8" fill="#8B6914" />
-            <circle cx="921" cy="134" r="3" fill="white" />
-            {/* Smile */}
+            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1327" cy="128" r="4" fill="white" />
+            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1377" cy="128" r="4" fill="white" />
             <path
-              d="M 880 155 Q 900 165 920 155"
-              stroke="#8B6914"
-              strokeWidth="3"
+              d="M 1325 160 Q 1350 175 1375 160"
+              stroke="#2C3E50"
+              strokeWidth="4"
               fill="none"
               strokeLinecap="round"
             />
@@ -128,31 +92,25 @@ export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLo
         {/* Sun face - thoughtful */}
         {sunExpression === 'thoughtful' && (
           <>
-            {/* Left eye looking up */}
-            <circle cx="880" cy="135" r="8" fill="#8B6914" />
-            <circle cx="880" cy="131" r="3" fill="white" />
-            {/* Right eye looking up */}
-            <circle cx="920" cy="135" r="8" fill="#8B6914" />
-            <circle cx="920" cy="131" r="3" fill="white" />
-            {/* Neutral mouth */}
-            <line x1="880" y1="160" x2="920" y2="160" stroke="#8B6914" strokeWidth="3" strokeLinecap="round" />
+            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1325" cy="124" r="4" fill="white" />
+            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1375" cy="124" r="4" fill="white" />
+            <line x1="1325" y1="165" x2="1375" y2="165" stroke="#2C3E50" strokeWidth="4" strokeLinecap="round" />
           </>
         )}
 
         {/* Sun face - frowning */}
         {sunExpression === 'frowning' && (
           <>
-            {/* Left eye */}
-            <circle cx="880" cy="135" r="8" fill="#8B6914" />
-            <circle cx="880" cy="134" r="3" fill="white" />
-            {/* Right eye */}
-            <circle cx="920" cy="135" r="8" fill="#8B6914" />
-            <circle cx="920" cy="134" r="3" fill="white" />
-            {/* Frown */}
+            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1325" cy="128" r="4" fill="white" />
+            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1375" cy="128" r="4" fill="white" />
             <path
-              d="M 880 160 Q 900 150 920 160"
-              stroke="#8B6914"
-              strokeWidth="3"
+              d="M 1325 165 Q 1350 150 1375 165"
+              stroke="#2C3E50"
+              strokeWidth="4"
               fill="none"
               strokeLinecap="round"
             />
@@ -162,176 +120,166 @@ export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLo
         {/* Sun face - eyes moving */}
         {sunExpression === 'eyes-moving' && (
           <>
-            {/* Left eye */}
-            <circle cx="880" cy="135" r="8" fill="#8B6914" />
-            <circle cx="881" cy="134" r="3" fill="white" />
-            {/* Right eye */}
-            <circle cx="920" cy="135" r="8" fill="#8B6914" />
-            <circle cx="921" cy="134" r="3" fill="white" />
-            {/* Smile */}
+            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1328" cy="128" r="4" fill="white" />
+            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
+            <circle cx="1372" cy="128" r="4" fill="white" />
             <path
-              d="M 880 155 Q 900 165 920 155"
-              stroke="#8B6914"
-              strokeWidth="3"
+              d="M 1325 160 Q 1350 175 1375 160"
+              stroke="#2C3E50"
+              strokeWidth="4"
               fill="none"
               strokeLinecap="round"
             />
           </>
         )}
 
-        {/* Clouds */}
-        <g fill="none" stroke="#B8860B" strokeWidth="1.5" opacity="0.5">
-          {/* Left clouds */}
-          <path d="M 50 400 Q 60 380 80 390 Q 90 370 110 385 Q 100 405 80 410 Q 60 415 50 400" />
-          <path d="M 30 450 Q 45 435 65 445 Q 75 425 95 440 Q 80 460 60 465 Q 40 468 30 450" />
-
-          {/* Right clouds */}
-          <path d="M 1100 420 Q 1110 400 1130 410 Q 1140 390 1160 405 Q 1150 425 1130 430 Q 1110 435 1100 420" />
-          <path d="M 1080 470 Q 1095 455 1115 465 Q 1125 445 1145 460 Q 1130 480 1110 485 Q 1090 488 1080 470" />
-        </g>
-
-        {/* Elegant Flying Bus - Streamlined Design with SVG animation */}
+        {/* Flying Bus - Dark with golden wings */}
         <g id="flyingBus">
-          {/* Front nose cone - aerodynamic */}
+          {/* Left wing - dark with golden accents */}
           <path
-            d="M 240 310 L 260 300 L 260 320 Z"
+            d="M 450 250 Q 350 200 250 230 L 280 260 Q 350 230 450 270 Z"
             fill="none"
-            stroke="#8B6914"
-            strokeWidth="2.5"
+            stroke="#2C3E50"
+            strokeWidth="3"
             strokeLinejoin="round"
           />
+          {/* Left wing feathers - golden */}
+          {Array.from({ length: 8 }).map((_, i) => (
+            <line
+              key={`left-feather-${i}`}
+              x1={450 - i * 25}
+              y1={250 - i * 3}
+              x2={450 - i * 25}
+              y2={270 + i * 3}
+              stroke="#D4AF37"
+              strokeWidth="2"
+              opacity="0.8"
+            />
+          ))}
 
-          {/* Main body - elongated and elegant */}
+          {/* Main bus body - dark */}
           <rect
-            x="260"
-            y="295"
-            width="140"
-            height="50"
-            rx="8"
+            x="450"
+            y="220"
+            width="200"
+            height="60"
+            rx="10"
             fill="none"
-            stroke="#8B6914"
-            strokeWidth="2.5"
+            stroke="#2C3E50"
+            strokeWidth="3"
           />
 
-          {/* Rear taper - streamlined */}
-          <path
-            d="M 400 295 L 420 305 L 420 315 L 400 325 Z"
-            fill="none"
-            stroke="#8B6914"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
+          {/* Bus cabin - darker fill */}
+          <rect
+            x="460"
+            y="230"
+            width="80"
+            height="40"
+            rx="5"
+            fill="#2C3E50"
+            opacity="0.2"
+            stroke="none"
           />
 
-          {/* Windows - minimal and elegant */}
-          {[0, 1, 2].map((i) => (
+          {/* Windows - golden outline */}
+          {[0, 1, 2, 3].map((i) => (
             <rect
               key={`window-${i}`}
-              x={275 + i * 35}
-              y="302"
-              width="28"
-              height="18"
+              x={470 + i * 40}
+              y="235"
+              width="32"
+              height="25"
               fill="none"
-              stroke="#8B6914"
-              strokeWidth="1.5"
+              stroke="#D4AF37"
+              strokeWidth="2"
               rx="2"
             />
           ))}
 
           {/* Door accent line */}
           <line
-            x1="275"
-            y1="320"
-            x2="305"
-            y2="320"
-            stroke="#8B6914"
-            strokeWidth="1.5"
-            opacity="0.6"
+            x1="470"
+            y1="260"
+            x2="510"
+            y2="260"
+            stroke="#D4AF37"
+            strokeWidth="2"
+            opacity="0.7"
           />
 
-          {/* Wheels - minimal circles */}
-          <circle cx="285" cy="350" r="10" fill="none" stroke="#8B6914" strokeWidth="2.5" />
-          <circle cx="285" cy="350" r="5" fill="#8B6914" opacity="0.3" />
+          {/* Wheels - dark circles */}
+          <circle cx="480" cy="290" r="12" fill="none" stroke="#2C3E50" strokeWidth="3" />
+          <circle cx="480" cy="290" r="6" fill="#2C3E50" opacity="0.4" />
 
-          <circle cx="395" cy="350" r="10" fill="none" stroke="#8B6914" strokeWidth="2.5" />
-          <circle cx="395" cy="350" r="5" fill="#8B6914" opacity="0.3" />
+          <circle cx="620" cy="290" r="12" fill="none" stroke="#2C3E50" strokeWidth="3" />
+          <circle cx="620" cy="290" r="6" fill="#2C3E50" opacity="0.4" />
 
-          {/* Left Wing - elegant and sharp */}
+          {/* Right wing - dark with golden accents */}
           <path
-            d="M 260 310 Q 180 290 140 310 L 160 315 Q 200 300 260 320 Z"
+            d="M 650 250 Q 750 200 850 230 L 820 260 Q 750 230 650 270 Z"
             fill="none"
-            stroke="#8B6914"
-            strokeWidth="2.5"
+            stroke="#2C3E50"
+            strokeWidth="3"
             strokeLinejoin="round"
           />
-
-          {/* Wing feather lines - minimal */}
-          {Array.from({ length: 5 }).map((_, i) => (
-            <line
-              key={`left-feather-${i}`}
-              x1={260 - i * 20}
-              y1={310 - i * 2}
-              x2={260 - i * 20}
-              y2={320 + i * 2}
-              stroke="#8B6914"
-              strokeWidth="1.5"
-              opacity="0.5"
-            />
-          ))}
-
-          {/* Right Wing - elegant and sharp */}
-          <path
-            d="M 400 310 Q 480 290 520 310 L 500 315 Q 460 300 400 320 Z"
-            fill="none"
-            stroke="#8B6914"
-            strokeWidth="2.5"
-            strokeLinejoin="round"
-          />
-
-          {/* Wing feather lines - minimal */}
-          {Array.from({ length: 5 }).map((_, i) => (
+          {/* Right wing feathers - golden */}
+          {Array.from({ length: 8 }).map((_, i) => (
             <line
               key={`right-feather-${i}`}
-              x1={400 + i * 20}
-              y1={310 - i * 2}
-              x2={400 + i * 20}
-              y2={320 + i * 2}
-              stroke="#8B6914"
-              strokeWidth="1.5"
-              opacity="0.5"
+              x1={650 + i * 25}
+              y1={250 - i * 3}
+              x2={650 + i * 25}
+              y2={270 + i * 3}
+              stroke="#D4AF37"
+              strokeWidth="2"
+              opacity="0.8"
             />
           ))}
 
-          {/* IKARUS text - elegant serif */}
+          {/* IKARUS text - golden */}
           <text
-            x="330"
-            y="290"
-            fontSize="12"
+            x="550"
+            y="215"
+            fontSize="18"
             fontFamily="serif"
             fontWeight="bold"
-            fill="#8B6914"
+            fill="#D4AF37"
             textAnchor="middle"
-            letterSpacing="1"
-            opacity="0.8"
+            letterSpacing="2"
+            opacity="0.9"
           >
             IKARUS
           </text>
 
-          {/* Animation: Flying left to right and back */}
+          {/* Motion lines - speed effect */}
+          <line x1="400" y1="240" x2="420" y2="240" stroke="#D4AF37" strokeWidth="2" opacity="0.5" />
+          <line x1="390" y1="260" x2="410" y2="260" stroke="#D4AF37" strokeWidth="2" opacity="0.4" />
+          <line x1="400" y1="280" x2="420" y2="280" stroke="#D4AF37" strokeWidth="2" opacity="0.5" />
+
+          {/* Animation: Flying left to right across screen */}
           <animateTransform
             attributeName="transform"
             attributeType="XML"
             type="translate"
-            values="0,0; 300,0; 0,0"
-            dur="8s"
+            values="-300,0; 1200,0; -300,0"
+            dur="12s"
             repeatCount="indefinite"
           />
         </g>
 
-        {/* Greek meander pattern bottom border */}
-        <g stroke="#B8860B" strokeWidth="2" fill="none">
-          {Array.from({ length: 12 }).map((_, i) => (
+        {/* Greek meander patterns - top and bottom */}
+        <g stroke="#D4AF37" strokeWidth="2" fill="none" opacity="0.6">
+          {/* Top meander */}
+          {Array.from({ length: 16 }).map((_, i) => (
+            <g key={`meander-top-${i}`}>
+              <path d={`M ${i * 100 + 20} 20 L ${i * 100 + 35} 20 L ${i * 100 + 35} 35 L ${i * 100 + 20} 35`} />
+            </g>
+          ))}
+          {/* Bottom meander */}
+          {Array.from({ length: 16 }).map((_, i) => (
             <g key={`meander-bottom-${i}`}>
-              <path d={`M ${i * 100 + 20} 570 L ${i * 100 + 35} 570 L ${i * 100 + 35} 585 L ${i * 100 + 20} 585`} />
+              <path d={`M ${i * 100 + 20} 455 L ${i * 100 + 35} 455 L ${i * 100 + 35} 470 L ${i * 100 + 20} 470`} />
             </g>
           ))}
         </g>

@@ -29,17 +29,22 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Animated Logo Banner - Full Width */}
+      <div className="w-full bg-background">
+        <AnimatedLogo />
+      </div>
+
       {/* Hero Section */}
       <section className="flex-1 flex items-center justify-center py-16 md:py-24">
         <div className="container mx-auto px-4">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center"
+            className="grid grid-cols-1 gap-8 md:gap-16 items-center"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Left Column - Text */}
-            <motion.div className="flex flex-col gap-6 order-2 md:order-1" variants={itemVariants}>
+            {/* Text Content */}
+            <motion.div className="flex flex-col gap-6" variants={itemVariants}>
               <div>
                 <h1 className="font-serif font-bold text-5xl md:text-6xl text-foreground mb-2">
                   Группа «Старый Икарус»
@@ -74,10 +79,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right Column - Animated Logo */}
-            <motion.div className="flex justify-center order-1 md:order-2" variants={itemVariants}>
-              <AnimatedLogo size="lg" />
-            </motion.div>
+
           </motion.div>
         </div>
       </section>
