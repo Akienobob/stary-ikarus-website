@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "music": "Music",
+    "media": "Media",
+    "contacts": "Contacts"
+  },
+  "language": {
+    "ru": "RU",
+    "en": "EN"
+  },
+  "home": {
+    "title": "STARY IKARUS",
+    "subtitle": "THE OLD ICARUS",
+    "tagline": "Folk-rock journeys through time and myth.",
+    "cta_music": "Listen to Music",
+    "cta_about": "Learn More"
+  },
+  "about": {
+    "title": "About the Band",
+    "section1_title": "Our Story",
+    "section1_text": "Stary Ikarus is a musical project born from a deep desire to connect ancient myths with contemporary sound. The band plays folk-rock infused with elements of blues, jazz, and psychedelic music, creating a unique sonic space where each song is a philosophical journey.\n\nOur music is inspired by the image of Icarus, who flew too close to the sun. But for us, this is not a story of falling, but a story of striving, seeking meaning, and transcendence.",
+    "section2_title": "Musical Philosophy",
+    "section2_text": "We believe that music is a language that speaks directly to the soul. Each track contains deeply philosophical lyrics that invite the listener to contemplate life, death, love, and eternity.\n\nOur compositions blend traditional instruments with contemporary sounds, creating a bridge between past and future.",
+    "members_title": "Band Members",
+    "member1_name": "Maxim Volkov",
+    "member1_role": "Vocals, Guitar",
+    "member2_name": "Alexey Petrov",
+    "member2_role": "Bass, Vocals",
+    "member3_name": "Ivan Sokolov",
+    "member3_role": "Drums, Percussion",
+    "member4_name": "Sergey Morozov",
+    "member4_role": "Keys, Synthesizer"
+  },
+  "music": {
+    "title": "Music",
+    "albums_title": "Albums",
+    "album1_title": "Flight to the Sun",
+    "album1_year": "2022",
+    "album1_description": "Our debut album, where we present our philosophy and sound.",
+    "album2_title": "Modern Myths",
+    "album2_year": "2023",
+    "album2_description": "Our second album, exploring ancient myths in the context of the modern world.",
+    "album3_title": "Return",
+    "album3_year": "2024",
+    "album3_description": "Our third album, completing the trilogy about Icarus's journey.",
+    "listen_on": "Listen on"
+  },
+  "media": {
+    "title": "Media",
+    "gallery_title": "Photo Gallery",
+    "videos_title": "Videos",
+    "concert_photos": "Concert Photos",
+    "studio_sessions": "Studio Sessions",
+    "behind_scenes": "Behind the Scenes"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "description": "Get in touch with us for bookings, collaborations, or simply to share your thoughts about our music.",
+    "form_name": "Your Name",
+    "form_email": "Email",
+    "form_subject": "Subject",
+    "form_message": "Message",
+    "form_submit": "Send",
+    "form_success": "Thank you! Your message has been sent.",
+    "form_error": "Error sending message. Please try again.",
+    "social_title": "Follow Us",
+    "booking": "Booking",
+    "booking_email": "booking@staryikarus.com",
+    "press": "Press",
+    "press_email": "press@staryikarus.com"
+  },
+  "footer": {
+    "copyright": "© 2024 Stary Ikarus. All rights reserved.",
+    "design": "Design inspired by ancient Greek mythology."
+  }
+}
