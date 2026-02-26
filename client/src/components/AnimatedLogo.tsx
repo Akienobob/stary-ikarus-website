@@ -23,7 +23,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
     return () => clearInterval(interval);
   }, [isHovering]);
 
-  const busImageUrl = 'https://private-us-east-1.manuscdn.com/sessionFile/2oQO3tGXi7zNBCr2MefI6f/sandbox/TXILKf9xlXHwwn5pWKeekj-img-1_1772084339000_na1fn_YnVzLXdpdGgtd2luZ3MtcHJvZmVzc2lvbmFs.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvMm9RTzN0R1hpN3pOQkNyMk1lZkk2Zi9zYW5kYm94L1RYSUxLZjl4bFhId3duNXBXS2Vla2otaW1nLTFfMTc3MjA4NDMzOTAwMF9uYTFmbl9ZblZ6TFhkcGRHZ3RkMmx1WjNNdGNISnZabVZ6YzJsdmJtRnMucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=eoCKDPBkillf3ojfjesOR7HSDidKh5edXqRW-OXmsd-sys0~2h7EicHwrbeY-VeiX5bknfj0FKuxcxDCaom1vyZMejViFfl6Ht5mszQnlkvZi5PZHOkXUd4yauhLXkH6UDQJrtJbOe0f6zV9yveZjo3oiz8g31aB3x0w1V8uy9d5jnWiDvwQvY5E~Ot7zx9Foz5~GmIu5A8spWJi13~zjILPNczEbU721BS~5UBCyyr6yhQq9SVs~6QIQG9Irk5Xxc2P-VAasqAp20qjgqhUNMEY86hdiPUqPK4z83JEVH95qAtTs~hOsbeTXDgYPho5rX0CJJrjkbfg3sLQmNRBGQ__';
+  const busImageUrl = 'https://private-us-east-1.manuscdn.com/sessionFile/2oQO3tGXi7zNBCr2MefI6f/sandbox/sDog5BcK3GWEvEpCBiOYfP_1772084540956_na1fn_YnVzLXdpdGgtd2luZ3MtdHJhbnNwYXJlbnQ.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvMm9RTzN0R1hpN3pOQkNyMk1lZkk2Zi9zYW5kYm94L3NEb2c1QmNLM0dXRXZFcENCaU9ZZlBfMTc3MjA4NDU0MDk1Nl9uYTFmbl9ZblZ6TFhkcGRHZ3RkMmx1WjNNdGRISmhibk53WVhKbGJuUS5wbmc~eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsd18xOTIwLGhfMTkyMC9mb3JtYXQsd2VicC9xdWFsaXR5LHFfODAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTg3NjE2MDB9fX1dfQ__&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=enFYGcrVdZvolTdoGGMcaQzOdjnvoSGFPzBVrrdBX3HJmgxs~QUHUeBY3zA6DgCWrXwY3aQL~qVv4rU52QyojK82YtfRmDbSx3l85SD2vNGz5Qm1h92Npy3d9U3C5isxkdrKAau9ajLHLXG5ERNx6SQlgGsLDMOzzLuBT1Axofwbzg5VQb8ZwgreIAAS5YGievDvFBqKGUTR8rBv1N6YA-7UwaeAQshyMZLjZx9mtvO-dRBVWnJw-HgYGm7VEu2PZK1QpqAQBKeWOfihMiOXMAIFY3epqq8f4v51BmE~FUshrQJJYRAEEXXbM1un2xo2Hs88VeZYZ0Y4uwkqX2ujyw__';
 
   return (
     <div 
@@ -55,8 +55,9 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
           <style>{`
             @keyframes busFloat {
               0% { transform: translateX(-600px); }
-              50% { transform: translateX(1200px); }
-              100% { transform: translateX(-600px); }
+              45% { transform: translateX(900px); }
+              55% { transform: translateX(900px) scaleX(-1); }
+              100% { transform: translateX(-600px) scaleX(-1); }
             }
             .bus-flying {
               animation: busFloat 16s ease-in-out infinite;
