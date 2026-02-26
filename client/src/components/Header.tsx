@@ -5,7 +5,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -27,10 +27,10 @@ export default function Header() {
             </div>
             <div className="hidden sm:block">
               <div className="text-sm font-serif font-bold text-foreground">
-                Старый Икарус
+                {language === 'ru' ? 'Старый Икарус' : 'Stary Ikarus'}
               </div>
               <div className="text-xs text-accent font-sans font-semibold">
-                Stary Ikarus
+                {language === 'ru' ? 'Stary Ikarus' : 'Старый Икарус'}
               </div>
             </div>
           </Link>
