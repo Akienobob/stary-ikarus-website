@@ -67,7 +67,12 @@ export default function Impressum() {
                 />
               </p>
               <p>
-                <strong>E-Mail:</strong> info@starikarus.de
+                <strong>E-Mail:</strong>{' '}
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 30'%3E%3Ctext x='10' y='20' font-family='Arial' font-size='14' fill='%23D4AF37'%3Einfo@starikarus.de%3C/text%3E%3C/svg%3E"
+                  alt="Email-Adresse"
+                  className="inline-block h-6"
+                />
               </p>
             </div>
           </motion.section>
