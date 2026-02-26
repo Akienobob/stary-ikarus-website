@@ -9,7 +9,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
 
   // URL автобуса и солнца с прозрачными фонами
   const busImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/kkYkgleGogRYojDt.png';
-  const sunImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/QNnpiKtMEHiGevBR.png';
+  const sunImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/DeKRJNmMTJboiLHe.png';
 
   return (
     <div 
