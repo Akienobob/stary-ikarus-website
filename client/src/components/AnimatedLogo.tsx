@@ -9,7 +9,6 @@ interface AnimatedLogoProps {
 type SunExpression = 'calm' | 'thoughtful' | 'frowning' | 'eyes-moving';
 
 export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLogoProps) {
-  const [isHovered, setIsHovered] = useState(false);
   const [sunExpression, setSunExpression] = useState<SunExpression>('calm');
 
   // Auto-cycle sun expression every 3 seconds
@@ -26,269 +25,331 @@ export default function AnimatedLogo({ size = 'md', className = '' }: AnimatedLo
 
   const sizeMap = {
     sm: 'w-32 h-32',
-    md: 'w-48 h-48',
-    lg: 'w-64 h-64',
+    md: 'w-full h-96',
+    lg: 'w-full h-screen',
   };
 
   return (
     <motion.div
-      className={`relative flex items-center justify-center ${sizeMap[size]} ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className={`relative flex items-center justify-center ${sizeMap[size]} ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden`}
     >
-      {/* Glow effect */}
-      <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-accent/20 via-accent/40 to-accent/20 blur-2xl"
-        animate={{ opacity: [0.3, 0.7, 0.3] }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          repeatType: 'loop',
-        }}
-      />
-
-      {/* SVG Logo - Winged Bus Flying to Sun */}
+      {/* SVG Container */}
       <svg
-        viewBox="0 0 800 400"
-        className="w-full h-full relative z-10 drop-shadow-lg"
+        viewBox="0 0 1200 600"
+        className="w-full h-full"
         xmlns="http://www.w3.org/2000/svg"
+        style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }}
       >
-        {/* Background clouds */}
-        <motion.ellipse
-          cx="100"
-          cy="320"
-          rx="60"
-          ry="30"
-          fill="#F5F1E8"
-          opacity="0.6"
-          animate={{ x: isHovered ? 10 : 0 }}
-          transition={{ duration: 0.8 }}
-        />
-        <motion.ellipse
-          cx="700"
-          cy="340"
-          rx="50"
-          ry="25"
-          fill="#F5F1E8"
-          opacity="0.5"
-          animate={{ x: isHovered ? -10 : 0 }}
-          transition={{ duration: 0.8 }}
-        />
-
-        {/* Sun rays background */}
-        <motion.g
-          animate={{ rotate: isHovered ? 360 : 0 }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-          style={{ transformOrigin: '680px 100px' }}
-        >
+        {/* Greek meander pattern top border */}
+        <g stroke="#B8860B" strokeWidth="2" fill="none">
           {Array.from({ length: 12 }).map((_, i) => (
+            <g key={`meander-${i}`}>
+              <path d={`M ${i * 100 + 20} 15 L ${i * 100 + 35} 15 L ${i * 100 + 35} 30 L ${i * 100 + 20} 30`} />
+            </g>
+          ))}
+        </g>
+
+        {/* Sun rays (radiating lines) */}
+        <motion.g
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          style={{ transformOrigin: '900px 150px' }}
+        >
+          {Array.from({ length: 24 }).map((_, i) => (
             <line
               key={`ray-${i}`}
-              x1="680"
-              y1="30"
-              x2="680"
-              y2="0"
+              x1="900"
+              y1="50"
+              x2="900"
+              y2="20"
               stroke="#D4AF37"
-              strokeWidth="5"
-              strokeLinecap="round"
+              strokeWidth="2"
               opacity="0.7"
-              transform={`rotate(${i * 30} 680 100)`}
+              transform={`rotate(${i * 15} 900 150)`}
             />
           ))}
         </motion.g>
 
-        {/* Sun circle */}
-        <circle cx="680" cy="100" r="70" fill="#FFD700" />
+        {/* Sun circle with gradient effect */}
+        <defs>
+          <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style={{ stopColor: '#FFE066', stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: '#FFD700', stopOpacity: 0.9 }} />
+          </radialGradient>
+          <filter id="sunGlow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
 
-        {/* Sun face expressions */}
+        <circle cx="900" cy="150" r="60" fill="url(#sunGradient)" filter="url(#sunGlow)" />
+
+        {/* Sun face - calm */}
         {sunExpression === 'calm' && (
           <>
             {/* Left eye */}
-            <circle cx="655" cy="80" r="12" fill="#8B6914" />
-            <circle cx="657" cy="78" r="5" fill="white" />
+            <circle cx="880" cy="135" r="8" fill="#8B6914" />
+            <circle cx="881" cy="134" r="3" fill="white" />
             {/* Right eye */}
-            <circle cx="705" cy="80" r="12" fill="#8B6914" />
-            <circle cx="707" cy="78" r="5" fill="white" />
+            <circle cx="920" cy="135" r="8" fill="#8B6914" />
+            <circle cx="921" cy="134" r="3" fill="white" />
             {/* Smile */}
             <path
-              d="M 655 110 Q 680 125 705 110"
+              d="M 880 155 Q 900 165 920 155"
               stroke="#8B6914"
-              strokeWidth="4"
+              strokeWidth="3"
               fill="none"
               strokeLinecap="round"
             />
           </>
         )}
 
+        {/* Sun face - thoughtful */}
         {sunExpression === 'thoughtful' && (
           <>
             {/* Left eye looking up */}
-            <circle cx="655" cy="80" r="12" fill="#8B6914" />
-            <circle cx="655" cy="74" r="5" fill="white" />
+            <circle cx="880" cy="135" r="8" fill="#8B6914" />
+            <circle cx="880" cy="131" r="3" fill="white" />
             {/* Right eye looking up */}
-            <circle cx="705" cy="80" r="12" fill="#8B6914" />
-            <circle cx="705" cy="74" r="5" fill="white" />
+            <circle cx="920" cy="135" r="8" fill="#8B6914" />
+            <circle cx="920" cy="131" r="3" fill="white" />
             {/* Neutral mouth */}
-            <line x1="655" y1="115" x2="705" y2="115" stroke="#8B6914" strokeWidth="4" strokeLinecap="round" />
+            <line x1="880" y1="160" x2="920" y2="160" stroke="#8B6914" strokeWidth="3" strokeLinecap="round" />
           </>
         )}
 
+        {/* Sun face - frowning */}
         {sunExpression === 'frowning' && (
           <>
             {/* Left eye */}
-            <circle cx="655" cy="80" r="12" fill="#8B6914" />
-            <circle cx="655" cy="78" r="5" fill="white" />
+            <circle cx="880" cy="135" r="8" fill="#8B6914" />
+            <circle cx="880" cy="134" r="3" fill="white" />
             {/* Right eye */}
-            <circle cx="705" cy="80" r="12" fill="#8B6914" />
-            <circle cx="705" cy="78" r="5" fill="white" />
+            <circle cx="920" cy="135" r="8" fill="#8B6914" />
+            <circle cx="920" cy="134" r="3" fill="white" />
             {/* Frown */}
             <path
-              d="M 655 115 Q 680 100 705 115"
+              d="M 880 160 Q 900 150 920 160"
               stroke="#8B6914"
-              strokeWidth="4"
+              strokeWidth="3"
               fill="none"
               strokeLinecap="round"
             />
           </>
         )}
 
+        {/* Sun face - eyes moving */}
         {sunExpression === 'eyes-moving' && (
           <>
             {/* Left eye */}
-            <circle cx="655" cy="80" r="12" fill="#8B6914" />
+            <circle cx="880" cy="135" r="8" fill="#8B6914" />
             <motion.circle
-              cx={655}
-              cy={80}
-              r="5"
+              cx={880}
+              cy={135}
+              r="3"
               fill="white"
-              animate={{ cx: [651, 659, 651], cy: [76, 80, 84] }}
+              animate={{ cx: [876, 884, 876], cy: [131, 135, 139] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
             {/* Right eye */}
-            <circle cx="705" cy="80" r="12" fill="#8B6914" />
+            <circle cx="920" cy="135" r="8" fill="#8B6914" />
             <motion.circle
-              cx={705}
-              cy={80}
-              r="5"
+              cx={920}
+              cy={135}
+              r="3"
               fill="white"
-              animate={{ cx: [701, 709, 701], cy: [76, 80, 84] }}
+              animate={{ cx: [916, 924, 916], cy: [131, 135, 139] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             />
             {/* Smile */}
             <path
-              d="M 655 110 Q 680 125 705 110"
+              d="M 880 155 Q 900 165 920 155"
               stroke="#8B6914"
-              strokeWidth="4"
+              strokeWidth="3"
               fill="none"
               strokeLinecap="round"
             />
           </>
         )}
 
-        {/* Bus with wings - flying animation */}
+        {/* Clouds */}
+        <g fill="none" stroke="#B8860B" strokeWidth="1.5" opacity="0.5">
+          {/* Left clouds */}
+          <path d="M 50 400 Q 60 380 80 390 Q 90 370 110 385 Q 100 405 80 410 Q 60 415 50 400" />
+          <path d="M 30 450 Q 45 435 65 445 Q 75 425 95 440 Q 80 460 60 465 Q 40 468 30 450" />
+
+          {/* Right clouds */}
+          <path d="M 1100 420 Q 1110 400 1130 410 Q 1140 390 1160 405 Q 1150 425 1130 430 Q 1110 435 1100 420" />
+          <path d="M 1080 470 Q 1095 455 1115 465 Q 1125 445 1145 460 Q 1130 480 1110 485 Q 1090 488 1080 470" />
+        </g>
+
+        {/* Flying Bus - Animated from left to right and back */}
         <motion.g
           animate={{
-            x: isHovered ? 50 : 0,
-            y: isHovered ? -15 : 0,
+            x: [0, 300, 0],
+            scaleX: [1, 1, -1],
           }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
         >
-          {/* Left wing */}
-          <motion.g
-            animate={{ rotate: isHovered ? 8 : 0 }}
-            style={{ transformOrigin: '180px 180px' }}
-            transition={{ duration: 0.6 }}
-          >
-            <path
-              d="M 180 180 L 80 130 L 120 180 Z"
-              fill="#D4AF37"
-              opacity="0.9"
+          {/* Bus body - vintage style with line hatching */}
+          <g>
+            {/* Main bus outline */}
+            <rect
+              x="250"
+              y="280"
+              width="160"
+              height="80"
+              rx="15"
+              fill="none"
+              stroke="#8B6914"
+              strokeWidth="2.5"
             />
+
+            {/* Bus roof line */}
             <path
-              d="M 80 130 L 120 145 L 120 180 Z"
-              fill="#B8860B"
-              opacity="0.7"
+              d="M 260 280 Q 330 250 410 280"
+              fill="none"
+              stroke="#8B6914"
+              strokeWidth="2.5"
             />
-            {/* Wing feathers */}
-            {Array.from({ length: 6 }).map((_, i) => (
-              <line
-                key={`left-feather-${i}`}
-                x1={80 + i * 8}
-                y1={130 + i * 7}
-                x2={80 + i * 8}
-                y2={165 + i * 7}
-                stroke="#8B6914"
-                strokeWidth="2"
-                opacity="0.6"
-              />
+
+            {/* Bus front */}
+            <circle cx="260" cy="310" r="12" fill="none" stroke="#8B6914" strokeWidth="2" />
+            <circle cx="260" cy="310" r="8" fill="none" stroke="#8B6914" strokeWidth="1.5" />
+
+            {/* Windows - 4 windows with crosshatch pattern */}
+            {[0, 1, 2, 3].map((i) => (
+              <g key={`window-${i}`}>
+                <rect
+                  x={275 + i * 28}
+                  y="290"
+                  width="22"
+                  height="20"
+                  fill="none"
+                  stroke="#8B6914"
+                  strokeWidth="1.5"
+                />
+                {/* Crosshatch pattern inside window */}
+                <line
+                  x1={275 + i * 28}
+                  y1="290"
+                  x2={297 + i * 28}
+                  y2="310"
+                  stroke="#8B6914"
+                  strokeWidth="0.8"
+                  opacity="0.5"
+                />
+                <line
+                  x1={297 + i * 28}
+                  y1="290"
+                  x2={275 + i * 28}
+                  y2="310"
+                  stroke="#8B6914"
+                  strokeWidth="0.8"
+                  opacity="0.5"
+                />
+              </g>
             ))}
-          </motion.g>
 
-          {/* Bus body */}
-          <rect x="130" y="140" width="100" height="60" rx="12" fill="#D4AF37" stroke="#8B6914" strokeWidth="2" />
-          <rect x="140" y="150" width="80" height="45" rx="8" fill="#F5F1E8" />
-
-          {/* Bus windows */}
-          <rect x="148" y="158" width="18" height="18" rx="2" fill="#87CEEB" opacity="0.8" />
-          <rect x="172" y="158" width="18" height="18" rx="2" fill="#87CEEB" opacity="0.8" />
-          <rect x="196" y="158" width="18" height="18" rx="2" fill="#87CEEB" opacity="0.8" />
-
-          {/* Bus door */}
-          <rect x="148" y="180" width="22" height="20" rx="2" fill="#B8860B" opacity="0.9" />
-
-          {/* Bus wheels */}
-          <circle cx="155" cy="205" r="10" fill="#333" stroke="#8B6914" strokeWidth="2" />
-          <circle cx="215" cy="205" r="10" fill="#333" stroke="#8B6914" strokeWidth="2" />
-          <circle cx="155" cy="205" r="5" fill="#666" />
-          <circle cx="215" cy="205" r="5" fill="#666" />
-
-          {/* Right wing */}
-          <motion.g
-            animate={{ rotate: isHovered ? -8 : 0 }}
-            style={{ transformOrigin: '280px 180px' }}
-            transition={{ duration: 0.6 }}
-          >
-            <path
-              d="M 280 180 L 380 130 L 340 180 Z"
-              fill="#D4AF37"
-              opacity="0.9"
+            {/* Door */}
+            <rect
+              x="275"
+              y="315"
+              width="20"
+              height="35"
+              fill="none"
+              stroke="#8B6914"
+              strokeWidth="1.5"
             />
-            <path
-              d="M 380 130 L 340 145 L 340 180 Z"
-              fill="#B8860B"
-              opacity="0.7"
-            />
-            {/* Wing feathers */}
-            {Array.from({ length: 6 }).map((_, i) => (
-              <line
-                key={`right-feather-${i}`}
-                x1={380 - i * 8}
-                y1={130 + i * 7}
-                x2={380 - i * 8}
-                y2={165 + i * 7}
+            <circle cx="292" cy="332" r="2" fill="#8B6914" />
+
+            {/* Wheels */}
+            <circle cx="280" cy="365" r="12" fill="none" stroke="#8B6914" strokeWidth="2.5" />
+            <circle cx="280" cy="365" r="8" fill="none" stroke="#8B6914" strokeWidth="1.5" />
+            <circle cx="280" cy="365" r="4" fill="#8B6914" />
+
+            <circle cx="400" cy="365" r="12" fill="none" stroke="#8B6914" strokeWidth="2.5" />
+            <circle cx="400" cy="365" r="8" fill="none" stroke="#8B6914" strokeWidth="1.5" />
+            <circle cx="400" cy="365" r="4" fill="#8B6914" />
+
+            {/* Left Wing */}
+            <g>
+              <path
+                d="M 260 310 Q 180 280 140 310 Q 160 330 260 320"
+                fill="none"
                 stroke="#8B6914"
-                strokeWidth="2"
-                opacity="0.6"
+                strokeWidth="2.5"
               />
-            ))}
-          </motion.g>
+              {/* Wing feathers */}
+              {Array.from({ length: 8 }).map((_, i) => (
+                <line
+                  key={`left-feather-${i}`}
+                  x1={260 - i * 12}
+                  y1={310 - i * 3}
+                  x2={260 - i * 12}
+                  y2={325 - i * 3}
+                  stroke="#8B6914"
+                  strokeWidth="1.5"
+                  opacity="0.7"
+                />
+              ))}
+            </g>
+
+            {/* Right Wing */}
+            <g>
+              <path
+                d="M 410 310 Q 490 280 530 310 Q 510 330 410 320"
+                fill="none"
+                stroke="#8B6914"
+                strokeWidth="2.5"
+              />
+              {/* Wing feathers */}
+              {Array.from({ length: 8 }).map((_, i) => (
+                <line
+                  key={`right-feather-${i}`}
+                  x1={410 + i * 12}
+                  y1={310 - i * 3}
+                  x2={410 + i * 12}
+                  y2={325 - i * 3}
+                  stroke="#8B6914"
+                  strokeWidth="1.5"
+                  opacity="0.7"
+                />
+              ))}
+            </g>
+
+            {/* IKARUS text on bus */}
+            <text
+              x="330"
+              y="275"
+              fontSize="14"
+              fontFamily="serif"
+              fontWeight="bold"
+              fill="#8B6914"
+              textAnchor="middle"
+              letterSpacing="2"
+            >
+              IKARUS
+            </text>
+          </g>
         </motion.g>
 
-        {/* Floating animation for bus */}
-        <motion.g
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          {/* This creates the floating effect */}
-        </motion.g>
+        {/* Greek meander pattern bottom border */}
+        <g stroke="#B8860B" strokeWidth="2" fill="none">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <g key={`meander-bottom-${i}`}>
+              <path d={`M ${i * 100 + 20} 570 L ${i * 100 + 35} 570 L ${i * 100 + 35} 585 L ${i * 100 + 20} 585`} />
+            </g>
+          ))}
+        </g>
       </svg>
-
-      {/* Text below logo */}
-      <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 text-center whitespace-nowrap">
-        <p className="font-serif font-bold text-accent text-sm md:text-base">
-          STARY IKARUS
-        </p>
-      </div>
     </motion.div>
   );
 }
