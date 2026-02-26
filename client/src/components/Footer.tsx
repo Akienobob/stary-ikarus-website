@@ -71,16 +71,17 @@ export default function Footer() {
         <div className="border-t border-border my-8" />
 
         {/* Copyright and Links */}
-        <div className="text-center text-foreground/60 text-sm space-y-4">
-          <p>{t('footer.copyright')}</p>
-          <div className="flex justify-center gap-4">
+        <div className="text-center text-foreground/60 text-sm">
+          <p>
+            {t('footer.copyright')}
+            {' | '}
             <a
               href="/impressum"
               className="text-foreground/60 hover:text-accent transition-colors duration-300"
             >
               {t('footer.impressum')}
             </a>
-          </div>
+          </p>
         </div>
       </div>
     </footer>
