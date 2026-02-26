@@ -26,11 +26,11 @@ export default function Header() {
               SI
             </div>
             <div className="hidden sm:block">
-              <div className="text-sm font-sans font-semibold text-accent">
-                STARY IKARUS
+              <div className="text-sm font-serif font-bold text-foreground">
+                Старый Икарус
               </div>
-              <div className="text-xs text-foreground/60">
-                {t('home.subtitle')}
+              <div className="text-xs text-accent font-sans font-semibold">
+                Stary Ikarus
               </div>
             </div>
           </Link>

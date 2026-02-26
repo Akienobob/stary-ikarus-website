@@ -42,11 +42,8 @@ export default function Home() {
             <motion.div className="flex flex-col gap-6 order-2 md:order-1" variants={itemVariants}>
               <div>
                 <h1 className="font-serif font-bold text-5xl md:text-6xl text-foreground mb-2">
-                  {t('home.title')}
+                  Группа «Старый Икарус»
                 </h1>
-                <p className="text-accent font-sans font-semibold text-lg md:text-xl">
-                  {t('home.subtitle')}
-                </p>
               </div>
 
               <div className="border-l-4 border-accent pl-4">
