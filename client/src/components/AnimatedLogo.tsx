@@ -27,13 +27,53 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
 
   return (
     <div 
-      className={`relative w-full h-80 ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center`}
+      className={`relative w-full h-96 ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => {
         setIsHovering(false);
         setSunExpression('calm');
       }}
     >
+      <style>{`
+        @keyframes busFloat {
+          0% { 
+            left: -15%;
+            transform: scaleX(1);
+          }
+          35% { 
+            left: 60%;
+            transform: scaleX(1);
+          }
+          50% { 
+            left: 60%;
+            transform: scaleX(-1);
+          }
+          85% { 
+            left: -15%;
+            transform: scaleX(-1);
+          }
+          100% { 
+            left: -15%;
+            transform: scaleX(1);
+          }
+        }
+        
+        .bus-flying {
+          animation: busFloat 16s ease-in-out infinite;
+        }
+        
+        @keyframes sunRaysRotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        
+        .sun-rays {
+          animation: sunRaysRotate 20s linear infinite;
+          transform-origin: center;
+        }
+      `}</style>
+
+      {/* Background SVG with sun and decorations */}
       <svg
         viewBox="0 0 1800 400"
         className="w-full h-full absolute inset-0"
@@ -52,22 +92,10 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
-          <style>{`
-            @keyframes busFloat {
-              0% { transform: translateX(-600px) scaleX(1); }
-              40% { transform: translateX(700px) scaleX(1); }
-              50% { transform: translateX(700px) scaleX(-1); }
-              90% { transform: translateX(-600px) scaleX(-1); }
-              100% { transform: translateX(-600px) scaleX(1); }
-            }
-            .bus-flying {
-              animation: busFloat 16s ease-in-out infinite;
-            }
-          `}</style>
         </defs>
 
         {/* Sun with rays - top right */}
-        <g id="sunRays">
+        <g className="sun-rays">
           {Array.from({ length: 32 }).map((_, i) => (
             <line
               key={`ray-${i}`}
@@ -81,15 +109,6 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
               transform={`rotate(${i * 11.25} 1550 180)`}
             />
           ))}
-          <animateTransform
-            attributeName="transform"
-            attributeType="XML"
-            type="rotate"
-            from="0 1550 180"
-            to="360 1550 180"
-            dur="20s"
-            repeatCount="indefinite"
-          />
         </g>
 
         {/* Sun circle */}
@@ -98,12 +117,10 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         {/* Sun face - calm */}
         {sunExpression === 'calm' && (
           <>
-            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1523" cy="152" r="5" fill="white" />
-            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1583" cy="152" r="5" fill="white" />
+            <circle cx="1520" cy="160" r="8" fill="#2C3E50" />
+            <circle cx="1580" cy="160" r="8" fill="#2C3E50" />
             <path
-              d="M 1520 195 Q 1550 215 1580 195"
+              d="M 1520 195 Q 1550 210 1580 195"
               stroke="#2C3E50"
               strokeWidth="5"
               fill="none"
@@ -115,23 +132,10 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         {/* Sun face - thoughtful */}
         {sunExpression === 'thoughtful' && (
           <>
-            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1520" cy="148" r="5" fill="white" />
-            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1580" cy="148" r="5" fill="white" />
-            <line x1="1520" y1="200" x2="1580" y2="200" stroke="#2C3E50" strokeWidth="5" strokeLinecap="round" />
-          </>
-        )}
-
-        {/* Sun face - frowning */}
-        {sunExpression === 'frowning' && (
-          <>
-            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1520" cy="152" r="5" fill="white" />
-            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1580" cy="152" r="5" fill="white" />
+            <circle cx="1520" cy="160" r="8" fill="#2C3E50" />
+            <circle cx="1580" cy="160" r="8" fill="#2C3E50" />
             <path
-              d="M 1520 200 Q 1550 180 1580 200"
+              d="M 1520 195 Q 1550 200 1580 195"
               stroke="#2C3E50"
               strokeWidth="5"
               fill="none"
@@ -140,15 +144,43 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
           </>
         )}
 
-        {/* Sun face - eyes moving (smiling when hovering) */}
-        {(sunExpression === 'eyes-moving' || isHovering) && (
+        {/* Sun face - frowning */}
+        {sunExpression === 'frowning' && (
           <>
-            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1525" cy="152" r="5" fill="white" />
-            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
-            <circle cx="1575" cy="152" r="5" fill="white" />
+            <circle cx="1520" cy="160" r="8" fill="#2C3E50" />
+            <circle cx="1580" cy="160" r="8" fill="#2C3E50" />
             <path
-              d="M 1520 195 Q 1550 220 1580 195"
+              d="M 1520 200 Q 1550 185 1580 200"
+              stroke="#2C3E50"
+              strokeWidth="5"
+              fill="none"
+              strokeLinecap="round"
+            />
+          </>
+        )}
+
+        {/* Sun face - eyes moving */}
+        {sunExpression === 'eyes-moving' && (
+          <>
+            <circle cx="1515" cy="160" r="8" fill="#2C3E50" />
+            <circle cx="1585" cy="160" r="8" fill="#2C3E50" />
+            <path
+              d="M 1520 195 Q 1550 215 1580 195"
+              stroke="#2C3E50"
+              strokeWidth="5"
+              fill="none"
+              strokeLinecap="round"
+            />
+          </>
+        )}
+
+        {/* Hovering smile */}
+        {isHovering && (
+          <>
+            <circle cx="1520" cy="160" r="8" fill="#2C3E50" />
+            <circle cx="1580" cy="160" r="8" fill="#2C3E50" />
+            <path
+              d="M 1520 190 Q 1550 220 1580 190"
               stroke="#2C3E50"
               strokeWidth="5"
               fill="none"
@@ -175,14 +207,16 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
       </svg>
 
       {/* Bus image - animated */}
-      <div className="bus-flying absolute inset-0 flex items-center justify-center pointer-events-none">
-        <img
-          src={busImageUrl}
-          alt="Stary Ikarus Bus with Wings"
-          className="h-48 object-contain drop-shadow-lg"
-          style={{ filter: 'drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3))' }}
-        />
-      </div>
+      <img
+        src={busImageUrl}
+        alt="Stary Ikarus Bus with Wings"
+        className="bus-flying absolute h-48 object-contain drop-shadow-lg"
+        style={{ 
+          filter: 'drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3))',
+          top: '50%',
+          transform: 'translateY(-50%)'
+        }}
+      />
     </div>
   );
 }
