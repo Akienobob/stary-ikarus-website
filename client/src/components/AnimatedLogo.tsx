@@ -24,11 +24,11 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
             transform: scaleX(-1);
           }
           35% { 
-            left: 62%;
+            left: 72%;
             transform: scaleX(-1);
           }
           50% { 
-            left: 62%;
+            left: 72%;
             transform: scaleX(1);
           }
           85% { 
@@ -59,7 +59,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         .sun-image {
           animation: sunRaysRotate 25s linear infinite;
           position: absolute;
-          right: 80px;
+          right: 120px;
           top: 50%;
           transform: translateY(-50%);
           width: 180px;
