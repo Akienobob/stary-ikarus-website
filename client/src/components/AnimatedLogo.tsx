@@ -7,9 +7,9 @@ interface AnimatedLogoProps {
 export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
   const [isHovering, setIsHovering] = useState(false);
 
-  // URL автобуса и солнца на S3
-  const busImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/zcpNZEidlBRKpdXk.png';
-  const sunImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/jmyTAukwgbEgAyeV.png';
+  // URL автобуса и солнца с прозрачными фонами
+  const busImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/kkYkgleGogRYojDt.png';
+  const sunImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/edDFSMQAierVNahU.png';
 
   return (
     <div 
@@ -21,23 +21,23 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         @keyframes busFloat {
           0% { 
             left: -15%;
-            transform: scaleX(1);
+            transform: scaleX(-1);
           }
           35% { 
             left: 55%;
-            transform: scaleX(1);
+            transform: scaleX(-1);
           }
           50% { 
             left: 55%;
-            transform: scaleX(-1);
+            transform: scaleX(1);
           }
           85% { 
             left: -15%;
-            transform: scaleX(-1);
+            transform: scaleX(1);
           }
           100% { 
             left: -15%;
-            transform: scaleX(1);
+            transform: scaleX(-1);
           }
         }
         
@@ -91,7 +91,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         </g>
       </svg>
 
-      {/* Sun image - bold and visible */}
+      {/* Sun image - with face and emotions */}
       <img
         src={sunImageUrl}
         alt="Artistic Sun"
