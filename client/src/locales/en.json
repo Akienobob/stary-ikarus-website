@@ -20,18 +20,18 @@
   "about": {
     "title": "About the Band",
     "section1_title": "Our Story",
-    "section1_text": "Stary Ikarus is a musical project born from a deep desire to connect ancient myths with contemporary sound. The band plays folk-rock infused with elements of blues, jazz, and psychedelic music, creating a unique sonic space where each song is a philosophical journey.\n\nOur music is inspired by the image of Icarus, who flew too close to the sun. But for us, this is not a story of falling, but a story of striving, seeking meaning, and transcendence.",
+    "section1_text": "Stary Ikarus has been active since February 2009 and consists of four Russian and Ukrainian musicians. Inspired by Greek mythology about Icarus, they believe that Icarus did not die after falling into the sea, but entered the realm of Poseidon, spent several centuries there, and then returned to land. Now he is older and wiser, but still alive and helping people.\n\nOver ten years of existence, the band has created a diverse and meaningful repertoire of original songs and performed in Germany and Poland. Their music combines folk-rock with elements of blues, jazz, and psychedelia, creating a unique sonic space where each composition is a philosophical journey.",
     "section2_title": "Musical Philosophy",
-    "section2_text": "We believe that music is a language that speaks directly to the soul. Each track contains deeply philosophical lyrics that invite the listener to contemplate life, death, love, and eternity.\n\nOur compositions blend traditional instruments with contemporary sounds, creating a bridge between past and future.",
+    "section2_text": "The band's musical style is defined as Art-Rock, Folk-Rock, or Indie — each listener can define it themselves. The band believes that music is a language that speaks directly to the soul. Each track contains deeply philosophical lyrics inspired by ancient Greek mythology, inviting the listener to contemplate life, death, love, and eternity.\n\nThe compositions blend world folk elements with contemporary sounds, creating a bridge between past and future, between myth and reality.",
     "members_title": "Band Members",
-    "member1_name": "Maxim Volkov",
-    "member1_role": "Vocals, Guitar",
-    "member2_name": "Alexey Petrov",
-    "member2_role": "Bass, Vocals",
-    "member3_name": "Ivan Sokolov",
-    "member3_role": "Drums, Percussion",
-    "member4_name": "Sergey Morozov",
-    "member4_role": "Keys, Synthesizer"
+    "member1_name": "Lev Marchenko",
+    "member1_role": "Guitar, Lead Vocals",
+    "member2_name": "Swjatoslaw Pertschichin",
+    "member2_role": "Bass, Backing Vocals",
+    "member3_name": "Ina Müller",
+    "member3_role": "Saxophone, Flute, Clarinet",
+    "member4_name": "Valery Vilman",
+    "member4_role": "Drums, Percussion"
   },
   "music": {
     "title": "Music",
@@ -69,10 +69,11 @@
     "booking": "Booking",
     "booking_email": "booking@staryikarus.com",
     "press": "Press",
-    "press_email": "press@staryikarus.com"
+    "press_email": "info@starikarus.de"
   },
   "footer": {
     "copyright": "© 2026 Stary Ikarus. All rights reserved.",
-    "design": "Design inspired by ancient Greek mythology."
+    "design": "Design inspired by ancient Greek mythology.",
+    "impressum": "Impressum"
   }
 }
