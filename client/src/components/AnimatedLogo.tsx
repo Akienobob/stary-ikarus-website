@@ -8,9 +8,11 @@ type SunExpression = 'calm' | 'thoughtful' | 'frowning' | 'eyes-moving';
 
 export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
   const [sunExpression, setSunExpression] = useState<SunExpression>('calm');
+  const [isHovering, setIsHovering] = useState(false);
 
   // Auto-cycle sun expression every 3 seconds
   useEffect(() => {
+    if (isHovering) return;
     const interval = setInterval(() => {
       setSunExpression((prev) => {
         const expressions: SunExpression[] = ['calm', 'thoughtful', 'frowning', 'eyes-moving'];
@@ -19,15 +21,24 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
       });
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isHovering]);
+
+  const busImageUrl = 'https://private-us-east-1.manuscdn.com/sessionFile/2oQO3tGXi7zNBCr2MefI6f/sandbox/TXILKf9xlXHwwn5pWKeekj-img-1_1772084339000_na1fn_YnVzLXdpdGgtd2luZ3MtcHJvZmVzc2lvbmFs.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvMm9RTzN0R1hpN3pOQkNyMk1lZkk2Zi9zYW5kYm94L1RYSUxLZjl4bFhId3duNXBXS2Vla2otaW1nLTFfMTc3MjA4NDMzOTAwMF9uYTFmbl9ZblZ6TFhkcGRHZ3RkMmx1WjNNdGNISnZabVZ6YzJsdmJtRnMucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=eoCKDPBkillf3ojfjesOR7HSDidKh5edXqRW-OXmsd-sys0~2h7EicHwrbeY-VeiX5bknfj0FKuxcxDCaom1vyZMejViFfl6Ht5mszQnlkvZi5PZHOkXUd4yauhLXkH6UDQJrtJbOe0f6zV9yveZjo3oiz8g31aB3x0w1V8uy9d5jnWiDvwQvY5E~Ot7zx9Foz5~GmIu5A8spWJi13~zjILPNczEbU721BS~5UBCyyr6yhQq9SVs~6QIQG9Irk5Xxc2P-VAasqAp20qjgqhUNMEY86hdiPUqPK4z83JEVH95qAtTs~hOsbeTXDgYPho5rX0CJJrjkbfg3sLQmNRBGQ__';
 
   return (
-    <div className={`relative w-full h-96 ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center`}>
+    <div 
+      className={`relative w-full h-80 ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center`}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => {
+        setIsHovering(false);
+        setSunExpression('calm');
+      }}
+    >
       <svg
-        viewBox="0 0 1600 500"
-        className="w-full h-full"
+        viewBox="0 0 1800 400"
+        className="w-full h-full absolute inset-0"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))' }}
+        style={{ pointerEvents: 'none' }}
       >
         <defs>
           <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
@@ -35,54 +46,64 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
             <stop offset="100%" style={{ stopColor: '#D4AF37', stopOpacity: 0.9 }} />
           </radialGradient>
           <filter id="sunGlow">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
             <feMerge>
               <feMergeNode in="coloredBlur" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
+          <style>{`
+            @keyframes busFloat {
+              0% { transform: translateX(-600px); }
+              50% { transform: translateX(1200px); }
+              100% { transform: translateX(-600px); }
+            }
+            .bus-flying {
+              animation: busFloat 16s ease-in-out infinite;
+            }
+          `}</style>
         </defs>
 
         {/* Sun with rays - top right */}
         <g id="sunRays">
-          {Array.from({ length: 24 }).map((_, i) => (
+          {Array.from({ length: 32 }).map((_, i) => (
             <line
               key={`ray-${i}`}
-              x1="1350"
-              y1="80"
-              x2="1350"
-              y2="40"
+              x1="1550"
+              y1="120"
+              x2="1550"
+              y2="60"
               stroke="#D4AF37"
-              strokeWidth="3"
-              opacity="0.8"
-              transform={`rotate(${i * 15} 1350 150)`}
+              strokeWidth="2.5"
+              opacity="0.85"
+              transform={`rotate(${i * 11.25} 1550 180)`}
             />
           ))}
           <animateTransform
             attributeName="transform"
             attributeType="XML"
             type="rotate"
-            from="0 1350 150"
-            to="360 1350 150"
+            from="0 1550 180"
+            to="360 1550 180"
             dur="20s"
             repeatCount="indefinite"
           />
         </g>
 
         {/* Sun circle */}
-        <circle cx="1350" cy="150" r="70" fill="url(#sunGradient)" filter="url(#sunGlow)" />
+        <circle cx="1550" cy="180" r="80" fill="url(#sunGradient)" filter="url(#sunGlow)" />
 
         {/* Sun face - calm */}
         {sunExpression === 'calm' && (
           <>
-            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1327" cy="128" r="4" fill="white" />
-            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1377" cy="128" r="4" fill="white" />
+            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1523" cy="152" r="5" fill="white" />
+            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1583" cy="152" r="5" fill="white" />
             <path
-              d="M 1325 160 Q 1350 175 1375 160"
+              d="M 1520 195 Q 1550 215 1580 195"
               stroke="#2C3E50"
-              strokeWidth="4"
+              strokeWidth="5"
               fill="none"
               strokeLinecap="round"
             />
@@ -92,198 +113,74 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         {/* Sun face - thoughtful */}
         {sunExpression === 'thoughtful' && (
           <>
-            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1325" cy="124" r="4" fill="white" />
-            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1375" cy="124" r="4" fill="white" />
-            <line x1="1325" y1="165" x2="1375" y2="165" stroke="#2C3E50" strokeWidth="4" strokeLinecap="round" />
+            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1520" cy="148" r="5" fill="white" />
+            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1580" cy="148" r="5" fill="white" />
+            <line x1="1520" y1="200" x2="1580" y2="200" stroke="#2C3E50" strokeWidth="5" strokeLinecap="round" />
           </>
         )}
 
         {/* Sun face - frowning */}
         {sunExpression === 'frowning' && (
           <>
-            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1325" cy="128" r="4" fill="white" />
-            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1375" cy="128" r="4" fill="white" />
+            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1520" cy="152" r="5" fill="white" />
+            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1580" cy="152" r="5" fill="white" />
             <path
-              d="M 1325 165 Q 1350 150 1375 165"
+              d="M 1520 200 Q 1550 180 1580 200"
               stroke="#2C3E50"
-              strokeWidth="4"
+              strokeWidth="5"
               fill="none"
               strokeLinecap="round"
             />
           </>
         )}
 
-        {/* Sun face - eyes moving */}
-        {sunExpression === 'eyes-moving' && (
+        {/* Sun face - eyes moving (smiling when hovering) */}
+        {(sunExpression === 'eyes-moving' || isHovering) && (
           <>
-            <circle cx="1325" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1328" cy="128" r="4" fill="white" />
-            <circle cx="1375" cy="130" r="10" fill="#2C3E50" />
-            <circle cx="1372" cy="128" r="4" fill="white" />
+            <circle cx="1520" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1525" cy="152" r="5" fill="white" />
+            <circle cx="1580" cy="155" r="12" fill="#2C3E50" />
+            <circle cx="1575" cy="152" r="5" fill="white" />
             <path
-              d="M 1325 160 Q 1350 175 1375 160"
+              d="M 1520 195 Q 1550 220 1580 195"
               stroke="#2C3E50"
-              strokeWidth="4"
+              strokeWidth="5"
               fill="none"
               strokeLinecap="round"
             />
           </>
         )}
-
-        {/* Flying Bus - Dark with golden wings */}
-        <g id="flyingBus">
-          {/* Left wing - dark with golden accents */}
-          <path
-            d="M 450 250 Q 350 200 250 230 L 280 260 Q 350 230 450 270 Z"
-            fill="none"
-            stroke="#2C3E50"
-            strokeWidth="3"
-            strokeLinejoin="round"
-          />
-          {/* Left wing feathers - golden */}
-          {Array.from({ length: 8 }).map((_, i) => (
-            <line
-              key={`left-feather-${i}`}
-              x1={450 - i * 25}
-              y1={250 - i * 3}
-              x2={450 - i * 25}
-              y2={270 + i * 3}
-              stroke="#D4AF37"
-              strokeWidth="2"
-              opacity="0.8"
-            />
-          ))}
-
-          {/* Main bus body - dark */}
-          <rect
-            x="450"
-            y="220"
-            width="200"
-            height="60"
-            rx="10"
-            fill="none"
-            stroke="#2C3E50"
-            strokeWidth="3"
-          />
-
-          {/* Bus cabin - darker fill */}
-          <rect
-            x="460"
-            y="230"
-            width="80"
-            height="40"
-            rx="5"
-            fill="#2C3E50"
-            opacity="0.2"
-            stroke="none"
-          />
-
-          {/* Windows - golden outline */}
-          {[0, 1, 2, 3].map((i) => (
-            <rect
-              key={`window-${i}`}
-              x={470 + i * 40}
-              y="235"
-              width="32"
-              height="25"
-              fill="none"
-              stroke="#D4AF37"
-              strokeWidth="2"
-              rx="2"
-            />
-          ))}
-
-          {/* Door accent line */}
-          <line
-            x1="470"
-            y1="260"
-            x2="510"
-            y2="260"
-            stroke="#D4AF37"
-            strokeWidth="2"
-            opacity="0.7"
-          />
-
-          {/* Wheels - dark circles */}
-          <circle cx="480" cy="290" r="12" fill="none" stroke="#2C3E50" strokeWidth="3" />
-          <circle cx="480" cy="290" r="6" fill="#2C3E50" opacity="0.4" />
-
-          <circle cx="620" cy="290" r="12" fill="none" stroke="#2C3E50" strokeWidth="3" />
-          <circle cx="620" cy="290" r="6" fill="#2C3E50" opacity="0.4" />
-
-          {/* Right wing - dark with golden accents */}
-          <path
-            d="M 650 250 Q 750 200 850 230 L 820 260 Q 750 230 650 270 Z"
-            fill="none"
-            stroke="#2C3E50"
-            strokeWidth="3"
-            strokeLinejoin="round"
-          />
-          {/* Right wing feathers - golden */}
-          {Array.from({ length: 8 }).map((_, i) => (
-            <line
-              key={`right-feather-${i}`}
-              x1={650 + i * 25}
-              y1={250 - i * 3}
-              x2={650 + i * 25}
-              y2={270 + i * 3}
-              stroke="#D4AF37"
-              strokeWidth="2"
-              opacity="0.8"
-            />
-          ))}
-
-          {/* IKARUS text - golden */}
-          <text
-            x="550"
-            y="215"
-            fontSize="18"
-            fontFamily="serif"
-            fontWeight="bold"
-            fill="#D4AF37"
-            textAnchor="middle"
-            letterSpacing="2"
-            opacity="0.9"
-          >
-            IKARUS
-          </text>
-
-          {/* Motion lines - speed effect */}
-          <line x1="400" y1="240" x2="420" y2="240" stroke="#D4AF37" strokeWidth="2" opacity="0.5" />
-          <line x1="390" y1="260" x2="410" y2="260" stroke="#D4AF37" strokeWidth="2" opacity="0.4" />
-          <line x1="400" y1="280" x2="420" y2="280" stroke="#D4AF37" strokeWidth="2" opacity="0.5" />
-
-          {/* Animation: Flying left to right across screen */}
-          <animateTransform
-            attributeName="transform"
-            attributeType="XML"
-            type="translate"
-            values="-300,0; 1200,0; -300,0"
-            dur="12s"
-            repeatCount="indefinite"
-          />
-        </g>
 
         {/* Greek meander patterns - top and bottom */}
-        <g stroke="#D4AF37" strokeWidth="2" fill="none" opacity="0.6">
+        <g stroke="#D4AF37" strokeWidth="2" fill="none" opacity="0.5">
           {/* Top meander */}
-          {Array.from({ length: 16 }).map((_, i) => (
+          {Array.from({ length: 18 }).map((_, i) => (
             <g key={`meander-top-${i}`}>
               <path d={`M ${i * 100 + 20} 20 L ${i * 100 + 35} 20 L ${i * 100 + 35} 35 L ${i * 100 + 20} 35`} />
             </g>
           ))}
           {/* Bottom meander */}
-          {Array.from({ length: 16 }).map((_, i) => (
+          {Array.from({ length: 18 }).map((_, i) => (
             <g key={`meander-bottom-${i}`}>
-              <path d={`M ${i * 100 + 20} 455 L ${i * 100 + 35} 455 L ${i * 100 + 35} 470 L ${i * 100 + 20} 470`} />
+              <path d={`M ${i * 100 + 20} 360 L ${i * 100 + 35} 360 L ${i * 100 + 35} 375 L ${i * 100 + 20} 375`} />
             </g>
           ))}
         </g>
       </svg>
+
+      {/* Bus image - animated */}
+      <div className="bus-flying absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src={busImageUrl}
+          alt="Stary Ikarus Bus with Wings"
+          className="h-48 object-contain drop-shadow-lg"
+          style={{ filter: 'drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3))' }}
+        />
+      </div>
     </div>
   );
 }
