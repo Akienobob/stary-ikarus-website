@@ -9,7 +9,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
 
   // URL автобуса и солнца с прозрачными фонами
   const busImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/kkYkgleGogRYojDt.png';
-  const sunImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/nqSxltCcKXfWHBbz.png';
+  const sunImageUrl = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/DeKRJNmMTJboiLHe.png';
 
   return (
     <div 
@@ -24,11 +24,11 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
             transform: scaleX(-1);
           }
           35% { 
-            left: 68%;
+            left: 62%;
             transform: scaleX(-1);
           }
           50% { 
-            left: 68%;
+            left: 62%;
             transform: scaleX(1);
           }
           85% { 
