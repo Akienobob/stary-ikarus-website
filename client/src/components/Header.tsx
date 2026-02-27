@@ -25,11 +25,11 @@ export default function Header() {
             <div className="text-2xl font-serif font-bold text-foreground">
               SI
             </div>
-            <div className="hidden sm:block">
-              <div className="text-sm font-serif font-bold text-foreground">
+            <div className="flex flex-col">
+              <div className="text-xs sm:text-sm font-serif font-bold text-foreground leading-tight">
                 {language === 'ru' ? 'Старый Икарус' : 'Stary Ikarus'}
               </div>
-              <div className="text-xs text-accent font-sans font-semibold">
+              <div className="hidden sm:block text-xs text-accent font-sans font-semibold">
                 {language === 'ru' ? 'Stary Ikarus' : 'Старый Икарус'}
               </div>
             </div>

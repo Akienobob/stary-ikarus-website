@@ -23,15 +23,15 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
             left: -15%;
             transform: scaleX(-1);
           }
-          35% { 
-            left: 72%;
+          30% { 
+            left: 55%;
             transform: scaleX(-1);
           }
           50% { 
-            left: 72%;
+            left: 55%;
             transform: scaleX(1);
           }
-          85% { 
+          80% { 
             left: -15%;
             transform: scaleX(1);
           }
