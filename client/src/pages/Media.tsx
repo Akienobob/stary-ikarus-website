@@ -31,8 +31,8 @@ export default function Media() {
   const galleryAlbums = [
     {
       id: 'wilde-weiber',
-      titleRu: 'Wilde Weiber',
-      titleDe: 'Wilde Weiber',
+      titleRu: 'Wilde Weiber (2010)',
+      titleDe: 'Wilde Weiber (2010)',
       cover: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_1_4843457f.jpg',
       photos: [
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_1_4843457f.jpg',
@@ -46,8 +46,8 @@ export default function Media() {
     },
     {
       id: 'studio-sessions',
-      titleRu: 'Студия',
-      titleDe: 'Studio',
+      titleRu: 'Студия (2010)',
+      titleDe: 'Studio (2010)',
       cover: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_1_eff36da7.jpg',
       photos: [
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_1_eff36da7.jpg',
@@ -59,8 +59,8 @@ export default function Media() {
     },
     {
       id: 'release-party',
-      titleRu: 'Release-Party',
-      titleDe: 'Release-Party',
+      titleRu: 'Release-Party (2010)',
+      titleDe: 'Release-Party (2010)',
       cover: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_1_10101301.jpg',
       photos: [
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_1_10101301.jpg',
