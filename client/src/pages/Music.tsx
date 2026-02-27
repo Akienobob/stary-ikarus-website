@@ -129,9 +129,22 @@ export default function Music() {
           </motion.h2>
           
           <motion.div
-            className="flex justify-center"
+            className="flex flex-col gap-6"
             variants={itemVariants}
           >
+            <div className="flex justify-center">
+              <a
+                href="https://open.spotify.com/album/06C3L0lrk8xYnrm6ZjoPDu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-[#1DB954] hover:bg-[#1ed760] text-white font-sans font-semibold">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Открыть полный альбом в Spotify
+                </Button>
+              </a>
+            </div>
+            
             <iframe
               style={{ borderRadius: '12px' }}
               src="https://open.spotify.com/embed/album/06C3L0lrk8xYnrm6ZjoPDu?utm_source=generator"
