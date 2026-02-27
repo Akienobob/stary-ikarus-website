@@ -18,7 +18,30 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
       onMouseLeave={() => setIsHovering(false)}
     >
       <style>{`
-        @keyframes busFloat {
+        @keyframes busFloatMobile {
+          0% { 
+            left: -20%;
+            transform: scaleX(-1);
+          }
+          30% { 
+            left: 35%;
+            transform: scaleX(-1);
+          }
+          50% { 
+            left: 35%;
+            transform: scaleX(1);
+          }
+          80% { 
+            left: -20%;
+            transform: scaleX(1);
+          }
+          100% { 
+            left: -20%;
+            transform: scaleX(-1);
+          }
+        }
+        
+        @keyframes busFloatDesktop {
           0% { 
             left: -15%;
             transform: scaleX(-1);
@@ -42,7 +65,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         }
         
         .bus-flying {
-          animation: busFloat 20s ease-in-out infinite;
+          animation: busFloatMobile 20s ease-in-out infinite;
           position: absolute;
           height: clamp(60px, 15vw, 160px);
           width: auto;
@@ -75,6 +98,13 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
           .sun-image {
             width: clamp(60px, 16vw, 120px);
             height: clamp(60px, 16vw, 120px);
+          }
+        }
+        
+        /* Десктопная анимация для больших экранов */
+        @media (min-width: 768px) {
+          .bus-flying {
+            animation: busFloatDesktop 20s ease-in-out infinite;
           }
         }
       `}</style>
