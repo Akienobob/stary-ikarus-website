@@ -30,12 +30,12 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Animated Logo Banner - Full Width */}
-      <div className="w-full bg-background">
+      <div className="w-full bg-background -mb-8 sm:-mb-12 md:-mb-16">
         <AnimatedLogo />
       </div>
 
       {/* Hero Section */}
-      <section className="flex-1 flex items-center justify-center py-8 sm:py-16 md:py-24">
+      <section className="flex-1 flex items-center justify-center pt-4 sm:pt-8 md:pt-12 pb-8 sm:pb-16 md:pb-24">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <motion.div
             className="flex flex-col gap-6 sm:gap-8 max-w-4xl mx-auto"
