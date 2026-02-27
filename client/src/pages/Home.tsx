@@ -99,7 +99,7 @@ export default function Home() {
           >
             {/* Info Card 1 */}
             <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-3xl md:text-4xl text-accent mb-3">
+              <h3 className="font-serif font-bold text-4xl md:text-5xl text-accent mb-3">
                 Folk-Rock
               </h3>
               <p className="text-foreground/70 text-sm leading-relaxed">
@@ -109,7 +109,7 @@ export default function Home() {
 
             {/* Info Card 2 */}
             <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-3xl md:text-4xl text-accent mb-3">
+              <h3 className="font-serif font-bold text-4xl md:text-5xl text-accent mb-3">
                 Philosophy
               </h3>
               <p className="text-foreground/70 text-sm leading-relaxed">
@@ -119,7 +119,7 @@ export default function Home() {
 
             {/* Info Card 3 */}
             <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-3xl md:text-4xl text-accent mb-3">
+              <h3 className="font-serif font-bold text-4xl md:text-5xl text-accent mb-3">
                 Journey
               </h3>
               <p className="text-foreground/70 text-sm leading-relaxed">

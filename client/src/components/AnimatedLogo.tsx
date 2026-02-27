@@ -42,7 +42,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         }
         
         .bus-flying {
-          animation: busFloat 16s ease-in-out infinite;
+          animation: busFloat 20s ease-in-out infinite;
           position: absolute;
           height: 160px;
           width: auto;
