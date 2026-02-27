@@ -116,6 +116,35 @@ export default function Music() {
           </motion.div>
         </motion.section>
 
+        {/* Spotify Player */}
+        <motion.section
+          className="py-12 md:py-16 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
+            Слушайте альбом на Spotify
+          </motion.h2>
+          
+          <motion.div
+            className="flex justify-center"
+            variants={itemVariants}
+          >
+            <iframe
+              style={{ borderRadius: '12px' }}
+              src="https://open.spotify.com/embed/album/06C3L0lrk8xYnrm6ZjoPDu?utm_source=generator"
+              width="100%"
+              height="380"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
+          </motion.div>
+        </motion.section>
+
         {/* Divider */}
         <div className="meander-divider" />
 
