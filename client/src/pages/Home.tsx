@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,7 +47,7 @@ export default function Home() {
             <motion.div className="flex flex-col gap-6" variants={itemVariants}>
               <div>
                 <h1 className="font-serif font-bold text-5xl md:text-6xl text-foreground mb-2">
-                  Группа «Старый Икарус»
+                  {language === 'ru' ? 'Группа «Старый Икарус»' : 'Stary Ikarus Band'}
                 </h1>
               </div>
 
@@ -99,7 +99,7 @@ export default function Home() {
           >
             {/* Info Card 1 */}
             <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-2xl text-accent mb-3">
+              <h3 className="font-serif font-bold text-3xl md:text-4xl text-accent mb-3">
                 Folk-Rock
               </h3>
               <p className="text-foreground/70 text-sm leading-relaxed">
@@ -109,7 +109,7 @@ export default function Home() {
 
             {/* Info Card 2 */}
             <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-2xl text-accent mb-3">
+              <h3 className="font-serif font-bold text-3xl md:text-4xl text-accent mb-3">
                 Philosophy
               </h3>
               <p className="text-foreground/70 text-sm leading-relaxed">
@@ -119,7 +119,7 @@ export default function Home() {
 
             {/* Info Card 3 */}
             <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-2xl text-accent mb-3">
+              <h3 className="font-serif font-bold text-3xl md:text-4xl text-accent mb-3">
                 Journey
               </h3>
               <p className="text-foreground/70 text-sm leading-relaxed">
