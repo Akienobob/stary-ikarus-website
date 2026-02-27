@@ -58,7 +58,7 @@ export default function Home() {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8 sm:pt-12 md:pt-16">
                 <Link href="/music" className="w-full sm:w-auto">
                   <Button
                     className="w-full bg-accent text-foreground hover:bg-accent/90 font-sans font-semibold"

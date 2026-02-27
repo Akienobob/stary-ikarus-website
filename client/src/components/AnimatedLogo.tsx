@@ -47,11 +47,11 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
             transform: scaleX(-1);
           }
           30% { 
-            left: 62%;
+            left: 72%;
             transform: scaleX(-1);
           }
           50% { 
-            left: 62%;
+            left: 72%;
             transform: scaleX(1);
           }
           80% { 
