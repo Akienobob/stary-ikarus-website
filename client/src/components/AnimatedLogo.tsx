@@ -13,7 +13,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
 
   return (
     <div 
-      className={`relative w-full h-96 ${className} bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center`}
+      className={`relative w-full bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center min-h-48 sm:min-h-64 md:min-h-96 ${className}`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -44,7 +44,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         .bus-flying {
           animation: busFloat 20s ease-in-out infinite;
           position: absolute;
-          height: 160px;
+          height: clamp(60px, 15vw, 160px);
           width: auto;
           top: 50%;
           transform: translateY(-50%);
@@ -59,22 +59,32 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         .sun-image {
           animation: sunRaysRotate 25s linear infinite;
           position: absolute;
-          right: 120px;
+          right: clamp(10px, 5vw, 120px);
           top: 50%;
           transform: translateY(-50%);
-          width: 180px;
-          height: 180px;
+          width: clamp(80px, 20vw, 180px);
+          height: clamp(80px, 20vw, 180px);
           object-fit: contain;
         }
+
+        /* Мобильная оптимизация для очень маленьких экранов */
+        @media (max-width: 380px) {
+          .bus-flying {
+            height: clamp(50px, 12vw, 100px);
+          }
+          .sun-image {
+            width: clamp(60px, 16vw, 120px);
+            height: clamp(60px, 16vw, 120px);
+          }
+        }
       `}</style>
-
-
 
       {/* Sun image - with face and emotions */}
       <img
         src={sunImageUrl}
         alt="Artistic Sun"
         className="sun-image"
+        loading="lazy"
         style={{ 
           filter: 'drop-shadow(0 0 8px rgba(0, 0, 0, 0.1))',
         }}
@@ -85,6 +95,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
         src={busImageUrl}
         alt="Stary Ikarus Bus with Wings"
         className="bus-flying"
+        loading="lazy"
         style={{ 
           filter: 'drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4))',
         }}

@@ -156,19 +156,19 @@
   }
   
   h1 {
-    @apply text-5xl md:text-6xl;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
   }
   
   h2 {
-    @apply text-4xl md:text-5xl;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
   }
   
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-xl sm:text-2xl md:text-3xl;
   }
   
   h4 {
-    @apply text-xl md:text-2xl;
+    @apply text-lg sm:text-xl md:text-2xl;
   }
   
   nav, [role="navigation"] {
@@ -249,11 +249,11 @@
   }
   
   .section-title {
-    @apply text-foreground font-serif font-bold text-4xl md:text-5xl mb-6;
+    @apply text-foreground font-serif font-bold text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6;
   }
   
   .section-subtitle {
-    @apply text-foreground/70 text-lg md:text-xl leading-relaxed mb-8;
+    @apply text-foreground/70 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed mb-6 sm:mb-8;
   }
   
   .nav-link {
@@ -265,7 +265,7 @@
   }
   
   .glass-card {
-    @apply bg-card/80 backdrop-blur-sm border border-border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300;
+    @apply bg-card/80 backdrop-blur-sm border border-border rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300;
   }
   
   /* Smooth fade-in animation */

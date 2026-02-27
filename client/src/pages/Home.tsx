@@ -35,42 +35,42 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="flex-1 flex items-center justify-center py-16 md:py-24">
-        <div className="container mx-auto px-4">
+      <section className="flex-1 flex items-center justify-center py-8 sm:py-16 md:py-24">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="grid grid-cols-1 gap-8 md:gap-16 items-center"
+            className="flex flex-col gap-6 sm:gap-8 max-w-4xl mx-auto"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             {/* Text Content */}
-            <motion.div className="flex flex-col gap-6" variants={itemVariants}>
+            <motion.div className="flex flex-col gap-4 sm:gap-6" variants={itemVariants}>
               <div>
-                <h1 className="font-serif font-bold text-5xl md:text-6xl text-foreground mb-2">
+                <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground mb-2 leading-tight">
                   {language === 'ru' ? 'Группа «Старый Икарус»' : 'Stary Ikarus Band'}
                 </h1>
               </div>
 
-              <div className="border-l-4 border-accent pl-4">
-                <p className="text-foreground/70 text-lg md:text-xl leading-relaxed font-serif italic">
+              <div className="border-l-4 border-accent pl-3 sm:pl-4">
+                <p className="text-foreground/70 text-base sm:text-lg md:text-xl leading-relaxed font-serif italic">
                   {t('home.tagline')}
                 </p>
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link href="/music">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4">
+                <Link href="/music" className="w-full sm:w-auto">
                   <Button
-                    className="bg-accent text-foreground hover:bg-accent/90 font-sans font-semibold"
+                    className="w-full bg-accent text-foreground hover:bg-accent/90 font-sans font-semibold"
                     size="lg"
                   >
                     {t('home.cta_music')}
                   </Button>
                 </Link>
-                <Link href="/about">
+                <Link href="/about" className="w-full sm:w-auto">
                   <Button
                     variant="outline"
-                    className="border-accent text-foreground hover:bg-accent/10 font-sans font-semibold"
+                    className="w-full border-accent text-foreground hover:bg-accent/10 font-sans font-semibold"
                     size="lg"
                   >
                     {t('home.cta_about')}

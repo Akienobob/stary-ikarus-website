@@ -45,40 +45,40 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen py-16 md:py-24">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen py-8 sm:py-16 md:py-24">
+      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         {/* Page Title */}
         <motion.div
-          className="mb-12 md:mb-16"
+          className="mb-8 sm:mb-12 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="section-title">{t('about.title')}</h1>
+          <h1 className="section-title text-3xl sm:text-4xl md:text-5xl">{t('about.title')}</h1>
           <div className="h-1 w-24 bg-gradient-to-r from-accent to-accent/50 rounded-full" />
         </motion.div>
 
         {/* Section 1: Our Story */}
         <motion.section
-          className="mb-16 md:mb-24"
+          className="mb-12 sm:mb-16 md:mb-24"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.h2 className="section-title mb-6" variants={itemVariants}>
+          <motion.h2 className="section-title mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl" variants={itemVariants}>
             {t('about.section1_title')}
           </motion.h2>
-          <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" variants={itemVariants}>
-            <p className="text-foreground/80 text-lg leading-relaxed whitespace-pre-line">
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" variants={itemVariants}>
+            <p className="text-foreground/80 text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
               {t('about.section1_text')}
             </p>
-            <div className="glass-card flex items-center justify-center min-h-64 bg-gradient-to-br from-accent/10 to-accent/5">
+            <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5">
               <div className="text-center">
-                <div className="text-6xl font-serif font-bold text-accent mb-4">
+                <div className="text-5xl sm:text-6xl font-serif font-bold text-accent mb-4">
                   ∞
                 </div>
-                <p className="text-foreground/60 text-sm">
+                <p className="text-foreground/60 text-xs sm:text-sm">
                   Бесконечное путешествие сквозь время и миф
                 </p>
               </div>
@@ -91,25 +91,25 @@ export default function About() {
 
         {/* Section 2: Musical Philosophy */}
         <motion.section
-          className="mb-16 md:mb-24"
+          className="mb-12 sm:mb-16 md:mb-24"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.h2 className="section-title mb-6" variants={itemVariants}>
+          <motion.h2 className="section-title mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl" variants={itemVariants}>
             {t('about.section2_title')}
           </motion.h2>
-          <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-8" variants={itemVariants}>
-            <div className="glass-card flex items-center justify-center min-h-64 bg-gradient-to-br from-accent/10 to-accent/5">
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" variants={itemVariants}>
+            <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5">
               <div className="text-center">
-                <div className="text-6xl mb-4">🎵</div>
-                <p className="text-foreground/60 text-sm">
+                <div className="text-5xl sm:text-6xl mb-4">🎵</div>
+                <p className="text-foreground/60 text-xs sm:text-sm">
                   Музыка как язык души
                 </p>
               </div>
             </div>
-            <p className="text-foreground/80 text-lg leading-relaxed whitespace-pre-line">
+            <p className="text-foreground/80 text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
               {t('about.section2_text')}
             </p>
           </motion.div>
@@ -125,32 +125,32 @@ export default function About() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.h2 className="section-title mb-12" variants={itemVariants}>
-            <div className="flex items-center gap-3">
-              <Users className="w-8 h-8 text-accent" />
+          <motion.h2 className="section-title mb-8 sm:mb-12 text-2xl sm:text-3xl md:text-4xl" variants={itemVariants}>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Users className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
               {t('about.members_title')}
             </div>
           </motion.h2>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
             variants={containerVariants}
           >
             {members.map((member, index) => (
               <motion.div
                 key={index}
-                className="glass-card text-center hover:shadow-lg transition-shadow duration-300"
+                className="glass-card text-center hover:shadow-lg transition-shadow duration-300 p-4 sm:p-6"
                 variants={itemVariants}
               >
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-3xl font-serif font-bold text-accent">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 mx-auto mb-3 sm:mb-4 flex items-center justify-center flex-shrink-0">
+                  <span className="text-2xl sm:text-3xl font-serif font-bold text-accent">
                     {member.name.charAt(0)}
                   </span>
                 </div>
-                <h3 className="font-serif font-bold text-lg text-foreground mb-2">
+                <h3 className="font-serif font-bold text-base sm:text-lg text-foreground mb-2">
                   {member.name}
                 </h3>
-                <p className="text-foreground/60 text-sm font-sans">
+                <p className="text-foreground/60 text-xs sm:text-sm font-sans">
                   {member.role}
                 </p>
               </motion.div>
