@@ -1,9 +1,11 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
-import { ImageIcon, Video } from 'lucide-react';
+import { ImageIcon, Video, X } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Media() {
   const { t } = useLanguage();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,13 +27,31 @@ export default function Media() {
     },
   };
 
-  const galleryItems = [
-    { type: 'photo', title: t('media.concert_photos'), icon: ImageIcon },
-    { type: 'photo', title: t('media.studio_sessions'), icon: ImageIcon },
-    { type: 'photo', title: t('media.behind_scenes'), icon: ImageIcon },
-    { type: 'photo', title: t('media.concert_photos'), icon: ImageIcon },
-    { type: 'photo', title: t('media.studio_sessions'), icon: ImageIcon },
-    { type: 'photo', title: t('media.behind_scenes'), icon: ImageIcon },
+  const galleryAlbums = [
+    {
+      id: 'wilde-weiber',
+      title: 'Wilde Weiber von Nina Krutikova',
+      photos: [
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_1_4843457f.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_2_be0d980e.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_3_2798085f.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_4_7f9cd61c.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_5_8d80fe85.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_6_f3f3df10.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_7_93e0619c.jpg',
+      ]
+    },
+    {
+      id: 'studio-sessions',
+      title: 'Shooting im Tonstudio',
+      photos: [
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_1_eff36da7.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_2_47c7e8ad.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_15_e8f2f726.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_16_3ab71237.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_18_5d32541b.jpg',
+      ]
+    }
   ];
 
   const videoItems = [
@@ -58,53 +78,83 @@ export default function Media() {
         </motion.div>
 
         {/* Photo Gallery Section */}
-        <motion.section
-          className="mb-16 md:mb-24"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2 className="section-title mb-12" variants={itemVariants}>
-            <div className="flex items-center gap-3">
-              <ImageIcon className="w-8 h-8 text-accent" />
-              {t('media.gallery_title')}
-            </div>
-          </motion.h2>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        {galleryAlbums.map((album, albumIndex) => (
+          <motion.section
+            key={album.id}
+            className={albumIndex > 0 ? 'mb-16 md:mb-24 pt-16 md:pt-24 border-t border-accent/20' : 'mb-16 md:mb-24'}
             variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
           >
-            {galleryItems.map((item, index) => (
-              <motion.div
-                key={index}
-                className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-              >
-                {/* Placeholder Image */}
-                <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center group-hover:from-accent/30 group-hover:to-accent/15 transition-all duration-300">
-                  <ImageIcon className="w-12 h-12 text-accent/50 group-hover:text-accent/70 transition-colors duration-300" />
-                </div>
+            <motion.h2 className="section-title mb-12" variants={itemVariants}>
+              <div className="flex items-center gap-3">
+                <ImageIcon className="w-8 h-8 text-accent" />
+                {album.title}
+              </div>
+            </motion.h2>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-end p-4">
-                  <p className="text-white font-sans font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {item.title}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
+              variants={containerVariants}
+            >
+              {album.photos.map((photo, index) => (
+                <motion.div
+                  key={index}
+                  className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => setSelectedImage(photo)}
+                >
+                  <img
+                    src={photo}
+                    alt={`${album.title} ${index + 1}`}
+                    className="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                    <ImageIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.section>
+        ))}
+
+        {/* Lightbox Modal */}
+        {selectedImage && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              className="relative max-w-4xl w-full"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedImage}
+                alt="Gallery"
+                className="w-full h-auto rounded-lg"
+              />
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 bg-accent hover:bg-accent/90 text-background p-2 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </motion.div>
           </motion.div>
-        </motion.section>
+        )}
 
         {/* Divider */}
-        <div className="meander-divider" />
+        <div className="meander-divider my-16 md:my-24" />
 
         {/* Videos Section */}
         <motion.section
-          className="py-16 md:py-24"
+          className="pt-16 md:pt-24"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -113,7 +163,7 @@ export default function Media() {
           <motion.h2 className="section-title mb-12" variants={itemVariants}>
             <div className="flex items-center gap-3">
               <Video className="w-8 h-8 text-accent" />
-              {t('media.videos_title')}
+              Видео
             </div>
           </motion.h2>
 
