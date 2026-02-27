@@ -1,10 +1,11 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
-import { ImageIcon, Video, X } from 'lucide-react';
+import { ImageIcon, Video, X, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Media() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const containerVariants = {
@@ -30,7 +31,8 @@ export default function Media() {
   const galleryAlbums = [
     {
       id: 'wilde-weiber',
-      title: 'Wilde Weiber von Nina Krutikova',
+      titleRu: 'Wilde Weiber фотографии Nina Krutikova',
+      titleDe: 'Wilde Weiber von Nina Krutikova',
       photos: [
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_1_4843457f.jpg',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/wilde_weiber_2_be0d980e.jpg',
@@ -43,13 +45,26 @@ export default function Media() {
     },
     {
       id: 'studio-sessions',
-      title: 'Shooting im Tonstudio',
+      titleRu: 'Студийные сессии',
+      titleDe: 'Shooting im Tonstudio',
       photos: [
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_1_eff36da7.jpg',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_2_47c7e8ad.jpg',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_15_e8f2f726.jpg',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_16_3ab71237.jpg',
         'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/studio_18_5d32541b.jpg',
+      ]
+    },
+    {
+      id: 'release-party',
+      titleRu: 'Release-Party 02.04.2010',
+      titleDe: 'Release-Party am 02.04.2010',
+      photos: [
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_1_10101301.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_2_e186e14e.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_3_ffedb6b4.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_4_66be2fa7.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_5_3e230059.jpg',
       ]
     }
   ];
@@ -63,6 +78,9 @@ export default function Media() {
     { title: 'Нет / Nein', videoId: '2fQ6DZ2t46E', duration: '3:33' },
   ];
 
+  const currentAlbum = galleryAlbums.find(a => a.id === selectedAlbum);
+  const getAlbumTitle = (album: typeof galleryAlbums[0]) => language === 'ru' ? album.titleRu : album.titleDe;
+
   return (
     <div className="min-h-screen py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -73,15 +91,14 @@ export default function Media() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="section-title">{t('media.title')}</h1>
+          <h1 className="section-title">{language === 'ru' ? 'Медиа' : t('media.title')}</h1>
           <div className="h-1 w-24 bg-gradient-to-r from-accent to-accent/50 rounded-full" />
         </motion.div>
 
-        {/* Photo Gallery Section */}
-        {galleryAlbums.map((album, albumIndex) => (
+        {/* Photo Gallery Section - Albums View */}
+        {!selectedAlbum ? (
           <motion.section
-            key={album.id}
-            className={albumIndex > 0 ? 'mb-16 md:mb-24 pt-16 md:pt-24 border-t border-accent/20' : 'mb-16 md:mb-24'}
+            className="mb-16 md:mb-24"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -90,15 +107,72 @@ export default function Media() {
             <motion.h2 className="section-title mb-12" variants={itemVariants}>
               <div className="flex items-center gap-3">
                 <ImageIcon className="w-8 h-8 text-accent" />
-                {album.title}
+                {language === 'ru' ? 'Фотогалерея' : 'Galerie'}
               </div>
             </motion.h2>
 
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               variants={containerVariants}
             >
-              {album.photos.map((photo, index) => (
+              {galleryAlbums.map((album) => (
+                <motion.button
+                  key={album.id}
+                  className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer text-left"
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => setSelectedAlbum(album.id)}
+                >
+                  <img
+                    src={album.photos[0]}
+                    alt={getAlbumTitle(album)}
+                    className="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-end p-4">
+                    <div className="w-full">
+                      <p className="text-white font-sans font-semibold text-sm md:text-base group-hover:opacity-100 transition-opacity duration-300">
+                        {getAlbumTitle(album)}
+                      </p>
+                      <p className="text-white/70 text-xs mt-1">
+                        {album.photos.length} {language === 'ru' ? 'фото' : 'Fotos'}
+                      </p>
+                    </div>
+                    <ChevronRight className="w-6 h-6 text-white ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </motion.button>
+              ))}
+            </motion.div>
+          </motion.section>
+        ) : (
+          /* Gallery View - Individual Album */
+          <motion.section
+            className="mb-16 md:mb-24"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.button
+              className="flex items-center gap-2 text-accent hover:text-accent/80 mb-8 transition-colors"
+              onClick={() => setSelectedAlbum(null)}
+              variants={itemVariants}
+            >
+              <ChevronRight className="w-5 h-5 rotate-180" />
+              {language === 'ru' ? 'Назад' : 'Zurück'}
+            </motion.button>
+
+            <motion.h2 className="section-title mb-12" variants={itemVariants}>
+              <div className="flex items-center gap-3">
+                <ImageIcon className="w-8 h-8 text-accent" />
+                {currentAlbum && getAlbumTitle(currentAlbum)}
+              </div>
+            </motion.h2>
+
+            <motion.div
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-4"
+              variants={containerVariants}
+            >
+              {currentAlbum?.photos.map((photo, index) => (
                 <motion.div
                   key={index}
                   className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
@@ -108,17 +182,17 @@ export default function Media() {
                 >
                   <img
                     src={photo}
-                    alt={`${album.title} ${index + 1}`}
+                    alt={`${getAlbumTitle(currentAlbum)} ${index + 1}`}
                     className="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                    <ImageIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <ImageIcon className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </motion.div>
               ))}
             </motion.div>
           </motion.section>
-        ))}
+        )}
 
         {/* Lightbox Modal */}
         {selectedImage && (
@@ -163,7 +237,7 @@ export default function Media() {
           <motion.h2 className="section-title mb-12" variants={itemVariants}>
             <div className="flex items-center gap-3">
               <Video className="w-8 h-8 text-accent" />
-              Видео
+              {language === 'ru' ? 'Видео' : 'Videos'}
             </div>
           </motion.h2>
 
