@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export default function Media() {
   const { t, language } = useLanguage();
+  const [selectedAlbumId, setSelectedAlbumId] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const containerVariants = {
@@ -81,6 +82,7 @@ export default function Media() {
   ];
 
   const getAlbumTitle = (album: typeof galleryAlbums[0]) => language === 'ru' ? album.titleRu : album.titleDe;
+  const currentAlbum = galleryAlbums.find(a => a.id === selectedAlbumId);
 
   return (
     <div className="min-h-screen py-16 md:py-24">
@@ -111,17 +113,18 @@ export default function Media() {
             </div>
           </motion.h2>
 
-          {/* Albums Grid - Multiple per row */}
+          {/* Albums Grid */}
           <motion.div
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 mb-12"
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"
             variants={containerVariants}
           >
             {galleryAlbums.map((album) => (
-              <motion.div
+              <motion.button
                 key={album.id}
                 className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
+                onClick={() => setSelectedAlbumId(album.id)}
               >
                 <img
                   src={album.cover}
@@ -133,37 +136,65 @@ export default function Media() {
                     {getAlbumTitle(album)}
                   </p>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </motion.div>
-
-          {/* Photos Grid - All photos from all albums */}
-          <motion.div
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 md:gap-3"
-            variants={containerVariants}
-          >
-            {galleryAlbums.map((album) =>
-              album.photos.map((photo, index) => (
-                <motion.div
-                  key={`${album.id}-${index}`}
-                  className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05 }}
-                  onClick={() => setSelectedImage(photo)}
-                >
-                  <img
-                    src={photo}
-                    alt={`${getAlbumTitle(album)} ${index + 1}`}
-                    className="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
-                    <ImageIcon className="w-4 md:w-6 h-4 md:h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </motion.div>
-              ))
-            )}
-          </motion.div>
         </motion.section>
+
+        {/* Album Modal */}
+        {selectedAlbumId && currentAlbum && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setSelectedAlbumId(null)}
+          >
+            <motion.div
+              className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-lg bg-background p-6 md:p-8"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedAlbumId(null)}
+                className="absolute top-4 right-4 bg-accent hover:bg-accent/90 text-background p-2 rounded-full transition-colors z-10"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 mt-4">
+                {getAlbumTitle(currentAlbum)}
+              </h3>
+
+              {/* Photos Grid in Modal */}
+              <motion.div
+                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-3"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {currentAlbum.photos.map((photo, index) => (
+                  <motion.div
+                    key={index}
+                    className="group relative overflow-hidden rounded-lg aspect-square cursor-pointer"
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => setSelectedImage(photo)}
+                  >
+                    <img
+                      src={photo}
+                      alt={`${getAlbumTitle(currentAlbum)} ${index + 1}`}
+                      className="w-full h-full object-cover group-hover:brightness-75 transition-all duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                      <ImageIcon className="w-4 md:w-6 h-4 md:h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
 
         {/* Lightbox Modal */}
         {selectedImage && (
