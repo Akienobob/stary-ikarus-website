@@ -63,6 +63,37 @@ export default function Music() {
 
 
 
+        {/* SoundCloud Player */}
+        <motion.section
+          className="py-12 md:py-16 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
+            Слушайте на SoundCloud
+          </motion.h2>
+          
+          <motion.div
+            className="flex justify-center"
+            variants={itemVariants}
+          >
+            <iframe
+              style={{ borderRadius: '12px' }}
+              width="100%"
+              height="450"
+              scrolling="no"
+              frameBorder="no"
+              allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/starikarus&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+            />
+          </motion.div>
+        </motion.section>
+
+        {/* Divider */}
+        <div className="meander-divider" />
+
         {/* Spotify Player */}
         <motion.section
           className="py-12 md:py-16 mb-12"
@@ -102,37 +133,6 @@ export default function Music() {
                 </Button>
               </a>
             </div>
-          </motion.div>
-        </motion.section>
-
-        {/* Divider */}
-        <div className="meander-divider" />
-
-        {/* SoundCloud Player */}
-        <motion.section
-          className="py-12 md:py-16 mb-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
-            Слушайте на SoundCloud
-          </motion.h2>
-          
-          <motion.div
-            className="flex justify-center"
-            variants={itemVariants}
-          >
-            <iframe
-              style={{ borderRadius: '12px' }}
-              width="100%"
-              height="450"
-              scrolling="no"
-              frameBorder="no"
-              allow="autoplay"
-              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/starikarus&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-            />
           </motion.div>
         </motion.section>
 
