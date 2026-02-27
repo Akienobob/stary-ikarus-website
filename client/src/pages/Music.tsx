@@ -61,60 +61,7 @@ export default function Music() {
           <div className="h-1 w-24 bg-gradient-to-r from-accent to-accent/50 rounded-full" />
         </motion.div>
 
-        {/* Albums Section */}
-        <motion.section
-          className="mb-16 md:mb-24"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2 className="section-title mb-12" variants={itemVariants}>
-            <div className="flex items-center gap-3">
-              <MusicIcon className="w-8 h-8 text-accent" />
-              {t('music.albums_title')}
-            </div>
-          </motion.h2>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={containerVariants}
-          >
-            {albums.map((album, index) => (
-              <motion.div
-                key={index}
-                className={`glass-card bg-gradient-to-br ${album.color} hover:shadow-lg transition-all duration-300 group`}
-                variants={itemVariants}
-              >
-                {/* Album Cover Placeholder */}
-                <div className="w-full aspect-square rounded-lg bg-gradient-to-br from-accent/30 to-accent/10 mb-6 flex items-center justify-center group-hover:from-accent/40 group-hover:to-accent/20 transition-all duration-300">
-                  <MusicIcon className="w-16 h-16 text-accent/50" />
-                </div>
-
-                {/* Album Info */}
-                <h3 className="font-serif font-bold text-xl text-foreground mb-2">
-                  {album.title}
-                </h3>
-                <p className="text-accent font-sans font-semibold text-sm mb-3">
-                  {album.year}
-                </p>
-                <p className="text-foreground/70 text-sm leading-relaxed mb-6">
-                  {album.description}
-                </p>
-
-                {/* Listen Button */}
-                <Button
-                  variant="outline"
-                  className="w-full border-accent text-foreground hover:bg-accent/10 font-sans font-semibold"
-                  size="sm"
-                >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  {t('music.listen_on')} Spotify
-                </Button>
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
 
         {/* Spotify Player */}
         <motion.section
@@ -132,6 +79,17 @@ export default function Music() {
             className="flex flex-col gap-6"
             variants={itemVariants}
           >
+            <iframe
+              style={{ borderRadius: '12px' }}
+              src="https://open.spotify.com/embed/album/06C3L0lrk8xYnrm6ZjoPDu?utm_source=generator"
+              width="100%"
+              height="380"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
+            
             <div className="flex justify-center">
               <a
                 href="https://open.spotify.com/album/06C3L0lrk8xYnrm6ZjoPDu"
@@ -144,16 +102,36 @@ export default function Music() {
                 </Button>
               </a>
             </div>
-            
+          </motion.div>
+        </motion.section>
+
+        {/* Divider */}
+        <div className="meander-divider" />
+
+        {/* SoundCloud Player */}
+        <motion.section
+          className="py-12 md:py-16 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
+            Слушайте на SoundCloud
+          </motion.h2>
+          
+          <motion.div
+            className="flex justify-center"
+            variants={itemVariants}
+          >
             <iframe
               style={{ borderRadius: '12px' }}
-              src="https://open.spotify.com/embed/album/06C3L0lrk8xYnrm6ZjoPDu?utm_source=generator"
               width="100%"
-              height="380"
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
+              height="450"
+              scrolling="no"
+              frameBorder="no"
+              allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/starikarus&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
             />
           </motion.div>
         </motion.section>
