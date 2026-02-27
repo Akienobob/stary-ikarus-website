@@ -38,7 +38,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="nav-link font-sans text-sm font-medium hover:text-accent transition-colors duration-300">
+              <Link key={item.href} href={item.href} className="nav-link font-sans text-lg font-medium hover:text-accent transition-colors duration-300">
                 {item.label}
               </Link>
             ))}
@@ -69,7 +69,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="nav-link font-sans text-sm font-medium block py-2 hover:text-accent transition-colors duration-300"
+                className="nav-link font-sans text-base font-medium block py-2 hover:text-accent transition-colors duration-300"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}

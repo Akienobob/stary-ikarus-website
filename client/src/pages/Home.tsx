@@ -84,51 +84,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="meander-divider" />
 
-      {/* Quick Info Section */}
-      <section className="py-16 md:py-24 bg-card/30">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {/* Info Card 1 */}
-            <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-4xl md:text-5xl text-accent mb-3">
-                Folk-Rock
-              </h3>
-              <p className="text-foreground/70 text-sm leading-relaxed">
-                Уникальное сочетание фолка, рока, блюза и джаза с психоделическими элементами.
-              </p>
-            </motion.div>
-
-            {/* Info Card 2 */}
-            <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-4xl md:text-5xl text-accent mb-3">
-                Philosophy
-              </h3>
-              <p className="text-foreground/70 text-sm leading-relaxed">
-                Глубокие, философичные тексты, вдохновленные древнегреческой мифологией.
-              </p>
-            </motion.div>
-
-            {/* Info Card 3 */}
-            <motion.div className="glass-card text-center" variants={itemVariants}>
-              <h3 className="font-serif font-bold text-4xl md:text-5xl text-accent mb-3">
-                Journey
-              </h3>
-              <p className="text-foreground/70 text-sm leading-relaxed">
-                Путешествие сквозь время, миф и звук — как полёт Икара к солнцу.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
