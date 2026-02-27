@@ -47,7 +47,7 @@ export default function Home() {
             <motion.div className="flex flex-col gap-4 sm:gap-6" variants={itemVariants}>
               <div>
                 <h1 className="font-serif font-bold text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-foreground mb-2 leading-tight">
-                  {language === 'ru' ? 'Группа «Старый Икарус» 3' : 'Stary Ikarus Band 3'}
+                  {language === 'ru' ? 'Группа «Старый Икарус»' : 'Stary Ikarus Band'}
                 </h1>
               </div>
 
