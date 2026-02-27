@@ -35,9 +35,12 @@ export default function Media() {
   ];
 
   const videoItems = [
-    { title: 'Live Performance - 2024', duration: '12:45' },
-    { title: 'Studio Session - Album 3', duration: '8:30' },
-    { title: 'Behind the Scenes', duration: '5:15' },
+    { title: 'Чай с бергамотом / Bergamotte Tee', videoId: '0VfUjFBIuMs', duration: '1:26' },
+    { title: 'Хищные бабы / Wilde Weiber', videoId: 'i0cxtmVkO_o', duration: '4:07' },
+    { title: 'Постапокалипсис / Postapokalypse', videoId: '4Qvl5bAn5as', duration: '3:55' },
+    { title: 'Обманщик / Betrüger', videoId: '0QBE2K7QgWY', duration: '4:49' },
+    { title: 'Неуловимый Джо / Uncatchable Joe', videoId: '1uStlchRh3s', duration: '3:04' },
+    { title: 'Нет / Nein', videoId: '2fQ6DZ2t46E', duration: '3:33' },
   ];
 
   return (
@@ -121,28 +124,19 @@ export default function Media() {
             {videoItems.map((video, index) => (
               <motion.div
                 key={index}
-                className="group relative overflow-hidden rounded-lg aspect-video cursor-pointer"
+                className="group relative overflow-hidden rounded-lg aspect-video"
                 variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
               >
-                {/* Video Placeholder */}
-                <div className="w-full h-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center group-hover:from-accent/30 group-hover:to-accent/15 transition-all duration-300">
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors duration-300">
-                      <div className="w-0 h-0 border-l-8 border-l-accent border-t-5 border-t-transparent border-b-5 border-b-transparent ml-1" />
-                    </div>
-                    <p className="text-foreground/60 text-xs font-sans">
-                      {video.duration}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-end p-4">
-                  <p className="text-white font-sans font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {video.title}
-                  </p>
-                </div>
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${video.videoId}`}
+                  title={video.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="rounded-lg"
+                />
               </motion.div>
             ))}
           </motion.div>
