@@ -13,7 +13,7 @@ export default function AnimatedLogo({ className = '' }: AnimatedLogoProps) {
 
   return (
     <div 
-      className={`relative w-full bg-gradient-to-b from-background via-background to-background/80 overflow-hidden flex items-center justify-center min-h-48 sm:min-h-64 md:min-h-96 ${className}`}
+      className={`relative w-full bg-gradient-to-b from-background via-background to-background/80 overflow-visible flex items-center justify-center min-h-8 sm:min-h-10 md:min-h-12 pb-20 sm:pb-28 md:pb-40 ${className}`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
