@@ -61,13 +61,12 @@ export default function Media() {
       id: 'release-party',
       titleRu: 'Release-Party (2010)',
       titleDe: 'Release-Party (2010)',
-      cover: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_1_10101301.jpg',
+      cover: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_1_f6f5c311.jpg',
       photos: [
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_1_10101301.jpg',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_2_e186e14e.jpg',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_3_ffedb6b4.jpg',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_4_66be2fa7.jpg',
-        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_5_3e230059.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_1_f6f5c311.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_2_1513d1df.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_3_5281175e.jpg',
+        'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/release_party_4_ea22276e.jpg',
       ]
     }
   ];
