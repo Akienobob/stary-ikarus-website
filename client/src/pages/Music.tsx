@@ -4,7 +4,7 @@ import { Music as MusicIcon, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function Music() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -72,7 +72,7 @@ export default function Music() {
           viewport={{ once: true }}
         >
           <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
-            Слушайте на SoundCloud
+            {language === 'ru' ? 'Слушайте на SoundCloud' : 'Listen on SoundCloud'}
           </motion.h2>
           
           <motion.div
@@ -103,7 +103,7 @@ export default function Music() {
           viewport={{ once: true }}
         >
           <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
-            Слушайте альбом на Spotify
+            {language === 'ru' ? 'Слушайте альбом на Spotify' : 'Listen to the Album on Spotify'}
           </motion.h2>
           
           <motion.div
@@ -129,7 +129,7 @@ export default function Music() {
               >
                 <Button className="bg-[#1DB954] hover:bg-[#1ed760] text-white font-sans font-semibold">
                   <ExternalLink className="w-4 h-4 mr-2" />
-                  Открыть полный альбом в Spotify
+                  {language === 'ru' ? 'Открыть полный альбом в Spotify' : 'Open Full Album on Spotify'}
                 </Button>
               </a>
             </div>
@@ -148,7 +148,7 @@ export default function Music() {
           viewport={{ once: true }}
         >
           <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
-            Слушайте везде
+            {language === 'ru' ? 'Слушайте везде' : 'Listen Everywhere'}
           </motion.h2>
 
           <motion.div
