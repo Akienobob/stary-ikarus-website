@@ -165,6 +165,43 @@ export default function About() {
             ))}
           </motion.div>
         </motion.section>
+
+        {/* Divider */}
+        <div className="meander-divider" />
+
+        {/* Former Members */}
+        <motion.section
+          className="pt-12 sm:pt-16 md:pt-24"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 className="section-title mb-8 sm:mb-12 text-2xl sm:text-3xl md:text-4xl" variants={itemVariants}>
+            {t('about.former_members_title')}
+          </motion.h2>
+
+          <motion.div
+            className="space-y-3 sm:space-y-4"
+            variants={containerVariants}
+          >
+            {[
+              t('about.former_member1'),
+              t('about.former_member2'),
+              t('about.former_member3'),
+              t('about.former_member4'),
+              t('about.former_member5'),
+            ].map((member, index) => (
+              <motion.p
+                key={index}
+                className="text-foreground/80 text-sm sm:text-base md:text-lg leading-relaxed"
+                variants={itemVariants}
+              >
+                {member}
+              </motion.p>
+            ))}
+          </motion.div>
+        </motion.section>
       </div>
     </div>
   );

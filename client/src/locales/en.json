@@ -35,7 +35,13 @@
     "member3_name": "Ina Müller",
     "member3_role": "Saxophone, Flute, Clarinet, Backing Vocals",
     "member4_name": "Valery Vilman",
-    "member4_role": "Drums, Percussion"
+    "member4_role": "Drums, Percussion",
+    "former_members_title": "Former Members and Session Musicians",
+    "former_member1": "Alexey Pronichev - Guitar, Drums",
+    "former_member2": "Vlad Shpunt – Drums, Percussion",
+    "former_member3": "Danila Bezrukov – Drums",
+    "former_member4": "Evgeny Ostrovsky (Willie Tobler) – Bass, Backing Vocals, Arrangements",
+    "former_member5": "Cuba Kandel – Percussion"
   },
   "music": {
     "title": "Music",
