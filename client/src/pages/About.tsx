@@ -29,18 +29,22 @@ export default function About() {
     {
       name: t('about.member1_name'),
       role: t('about.member1_role'),
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/Lev_6224a242.jpg',
     },
     {
       name: t('about.member2_name'),
       role: t('about.member2_role'),
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/Slava_85fd6864.jpg',
     },
     {
       name: t('about.member3_name'),
       role: t('about.member3_role'),
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/Ina_2cb1cddf.jpg',
     },
     {
       name: t('about.member4_name'),
       role: t('about.member4_role'),
+      image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/Valera_18eb947e.jpg',
     },
   ];
 
@@ -142,11 +146,19 @@ export default function About() {
                 className="glass-card text-center hover:shadow-lg transition-shadow duration-300 p-4 sm:p-6"
                 variants={itemVariants}
               >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 mx-auto mb-3 sm:mb-4 flex items-center justify-center flex-shrink-0">
-                  <span className="text-2xl sm:text-3xl font-serif font-bold text-accent">
-                    {member.name.charAt(0)}
-                  </span>
-                </div>
+                {member.image ? (
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover mx-auto mb-3 sm:mb-4 border-2 border-accent/30"
+                  />
+                ) : (
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-accent/30 to-accent/10 mx-auto mb-3 sm:mb-4 flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl sm:text-3xl font-serif font-bold text-accent">
+                      {member.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
                 <h3 className="font-serif font-bold text-base sm:text-lg text-foreground mb-2">
                   {member.name}
                 </h3>
