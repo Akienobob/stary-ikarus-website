@@ -79,7 +79,7 @@ export default function About() {
             </p>
             <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5 overflow-hidden">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/1000050483ed_52632548.JPG"
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/EzFTaWvpPElvwLyy.png"
                 alt="История группы"
                 className="w-full h-full object-cover"
               />
