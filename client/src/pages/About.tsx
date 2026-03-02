@@ -71,21 +71,18 @@ export default function About() {
           viewport={{ once: true }}
         >
           <motion.h2 className="section-title mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl" variants={itemVariants}>
-            {t('about.section1_title')}
+            История группы
           </motion.h2>
           <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" variants={itemVariants}>
             <p className="text-foreground/80 text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
               {t('about.section1_text')}
             </p>
-            <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5">
-              <div className="text-center">
-                <div className="text-5xl sm:text-6xl font-serif font-bold text-accent mb-4">
-                  ∞
-                </div>
-                <p className="text-foreground/60 text-xs sm:text-sm">
-                  Бесконечное путешествие сквозь время и миф
-                </p>
-              </div>
+            <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5 overflow-hidden">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/1000050483ed_52632548.JPG"
+                alt="История группы"
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
         </motion.section>
@@ -102,7 +99,7 @@ export default function About() {
           viewport={{ once: true }}
         >
           <motion.h2 className="section-title mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl" variants={itemVariants}>
-            {t('about.section2_title')}
+            О мышах и людях
           </motion.h2>
           <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" variants={itemVariants}>
             <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5 overflow-hidden">

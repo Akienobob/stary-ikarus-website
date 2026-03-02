@@ -15,7 +15,7 @@ export default function Footer() {
               STARY IKARUS
             </div>
             <p className="text-foreground/70 text-xs sm:text-sm leading-relaxed">
-              Omnia possideat, non possidet aera Minos(©)
+              Omnia possideat, non possidet aera Minos ©
             </p>
           </div>
 
