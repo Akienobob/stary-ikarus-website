@@ -77,11 +77,11 @@ export default function About() {
             <p className="text-foreground/80 text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
               {t('about.section1_text')}
             </p>
-            <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5 overflow-hidden">
+            <div className="glass-card flex items-center justify-center min-h-64 sm:min-h-80 md:min-h-96 bg-gradient-to-br from-accent/10 to-accent/5 overflow-hidden">
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/EzFTaWvpPElvwLyy.png"
                 alt="История группы"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-contain"
               />
             </div>
           </motion.div>
