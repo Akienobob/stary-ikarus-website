@@ -81,7 +81,7 @@ export default function About() {
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/EzFTaWvpPElvwLyy.png"
                 alt="История группы"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           </motion.div>
