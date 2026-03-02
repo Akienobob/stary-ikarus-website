@@ -98,24 +98,6 @@ export default function Contacts() {
               </a>
             </div>
 
-            {/* Press Card */}
-            <div className="glass-card">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/20 flex items-center justify-center">
-                  <Mail className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="font-serif font-bold text-lg text-foreground">
-                  {t('contacts.press')}
-                </h3>
-              </div>
-              <a
-                href="mailto:press@staryikarus.com"
-                className="text-foreground/70 hover:text-accent transition-colors duration-300 text-sm"
-              >
-                {t('contacts.press_email')}
-              </a>
-            </div>
-
             {/* Social Media Card */}
             <div className="glass-card">
               <div className="flex items-center gap-4 mb-4">
@@ -128,16 +110,7 @@ export default function Contacts() {
               </div>
               <div className="flex gap-3">
                 <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground/60 hover:text-accent transition-colors duration-300 text-sm"
-                >
-                  Instagram
-                </a>
-                <span className="text-foreground/30">•</span>
-                <a
-                  href="https://youtube.com"
+                  href="https://www.youtube.com/@starikarus"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground/60 hover:text-accent transition-colors duration-300 text-sm"
@@ -146,12 +119,12 @@ export default function Contacts() {
                 </a>
                 <span className="text-foreground/30">•</span>
                 <a
-                  href="https://bandcamp.com"
+                  href="https://www.instagram.com/staryikarus/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-foreground/60 hover:text-accent transition-colors duration-300 text-sm"
                 >
-                  Bandcamp
+                  Instagram
                 </a>
               </div>
             </div>
@@ -255,10 +228,10 @@ export default function Contacts() {
         >
           <motion.div variants={itemVariants}>
             <h2 className="font-serif font-bold text-2xl md:text-3xl text-foreground mb-4">
-              Спасибо за интерес к нашей музыке
+              {t('contacts.thank_you_title')}
             </h2>
             <p className="text-foreground/70 text-lg leading-relaxed max-w-2xl mx-auto">
-              Мы с нетерпением ждём возможности поделиться нашим искусством с вами. Свяжитесь с нами для букинга, сотрудничества или просто чтобы обсудить музыку.
+              {t('contacts.thank_you_text')}
             </p>
           </motion.div>
         </motion.section>

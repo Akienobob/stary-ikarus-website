@@ -136,39 +136,7 @@ export default function Music() {
           </motion.div>
         </motion.section>
 
-        {/* Divider */}
-        <div className="meander-divider" />
 
-        {/* Streaming Platforms */}
-        <motion.section
-          className="py-12 md:py-16"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2 className="section-title mb-12 text-center" variants={itemVariants}>
-            {language === 'ru' ? 'Слушайте везде' : 'Listen Everywhere'}
-          </motion.h2>
-
-          <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-            variants={containerVariants}
-          >
-            {['Spotify', 'Apple Music', 'YouTube Music', 'Bandcamp'].map((platform) => (
-              <motion.a
-                key={platform}
-                href="#"
-                className="glass-card text-center py-6 hover:shadow-lg hover:bg-accent/5 transition-all duration-300 group"
-                variants={itemVariants}
-              >
-                <p className="font-sans font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
-                  {platform}
-                </p>
-              </motion.a>
-            ))}
-          </motion.div>
-        </motion.section>
       </div>
     </div>
   );

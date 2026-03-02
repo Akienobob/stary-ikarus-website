@@ -19,17 +19,21 @@
   },
   "about": {
     "title": "About the Band",
-    "section1_title": "Our Story",
-    "section1_text": "Stary Ikarus has been active since February 2009 and consists of four Russian and Ukrainian musicians. Inspired by Greek mythology about Icarus, they believe that Icarus did not die after falling into the sea, but entered the realm of Poseidon, spent several centuries there, and then returned to land. Now he is older and wiser, but still alive and helping people.\n\nOver ten years of existence, the band has created a diverse and meaningful repertoire of original songs and performed in Germany and Poland. Their music combines folk-rock with elements of blues, jazz, and psychedelia, creating a unique sonic space where each composition is a philosophical journey.",
-    "section2_title": "Musical Philosophy",
-    "section2_text": "The band's musical style is defined as Art-Rock, Folk-Rock, or Indie — each listener can define it themselves. The band believes that music is a language that speaks directly to the soul. Each track contains deeply philosophical lyrics inspired by ancient Greek mythology, inviting the listener to contemplate life, death, love, and eternity.\n\nThe compositions blend world folk elements with contemporary sounds, creating a bridge between past and future, between myth and reality.",
+    "section1_title": "Band History",
+    "section1_title_ru": "История группы",
+    "section1_text": "The band \"Stary Ikarus\" was founded in 2009 by guitarists Lev Marchenko and Evgeny Ostrovsky. The name did not come immediately — they wanted something mythical and ambiguous, yet at the same time familiar. The musicians recalled the myth of Icarus and decided that Icarus should continue to live and fly on — just a little older.\nOver the past 15 years, the band has written a considerable number of diverse songs and played roughly the same number of concerts in Germany and Poland. The lineup has changed several times and currently consists of four musicians living in Hamburg.",
+    "section2_title": "Of Mice and Men",
+    "section2_title_ru": "О мышах и людях",
+    "section2_text": "In our songs you will meet the most diverse characters, both people and animals (and even plants). The lyrical heroes are often troubled, so we warn in advance: an attentive and empathetic listener may change several perspectives during one concert and in the process either go crazy or achieve enlightenment. So far, no one has admitted it, but maybe it's out of modesty.",
+    "thank_you_title": "Thank you for your interest in our music",
+    "thank_you_text": "We look forward to sharing our art with you. Contact us for bookings, collaborations, or simply to discuss music.",
     "members_title": "Band Members",
     "member1_name": "Lev Marchenko",
-    "member1_role": "Guitar, Lead Vocals",
-    "member2_name": "Swjatoslaw Pertschichin",
+    "member1_role": "Guitar, Vocals",
+    "member2_name": "Sviatoslav Perchikhin",
     "member2_role": "Bass, Backing Vocals",
     "member3_name": "Ina Müller",
-    "member3_role": "Saxophone, Flute, Clarinet",
+    "member3_role": "Saxophone, Flute, Clarinet, Backing Vocals",
     "member4_name": "Valery Vilman",
     "member4_role": "Drums, Percussion"
   },
@@ -67,13 +71,13 @@
     "form_error": "Error sending message. Please try again.",
     "social_title": "Follow Us",
     "booking": "Booking",
-    "booking_email": "booking@staryikarus.com",
-    "press": "Press",
-    "press_email": "info@starikarus.de"
+    "booking_email": "info@starikarus.de",
+    "thank_you_title": "Thank you for your interest in our music",
+    "thank_you_text": "We look forward to sharing our art with you. Contact us for bookings, collaborations, or simply to discuss music."
   },
   "footer": {
     "copyright": "© 2026 Stary Ikarus. All rights reserved.",
-    "design": "Design inspired by ancient Greek mythology.",
+    "design": "Omnia possideat, non possidet aera Minos ©",
     "impressum": "Impressum"
   }
 }
