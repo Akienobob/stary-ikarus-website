@@ -13,6 +13,7 @@ export default function Header() {
     { label: t('nav.about'), href: '/about' },
     { label: t('nav.music'), href: '/music' },
     { label: t('nav.media'), href: '/media' },
+    ...(language === 'ru' ? [{ label: 'Тексты', href: '/lyrics' }] : []),
     { label: t('nav.contacts'), href: '/contacts' },
   ];
 

@@ -13,6 +13,7 @@ import Music from "@/pages/Music";
 import Media from "@/pages/Media";
 import Contacts from "@/pages/Contacts";
 import Impressum from "@/pages/Impressum";
+import Lyrics from "@/pages/Lyrics";
 
 function Router() {
   return (
@@ -26,6 +27,7 @@ function Router() {
           <Route path="/media" component={Media} />
           <Route path="/contacts" component={Contacts} />
           <Route path="/impressum" component={Impressum} />
+          <Route path="/lyrics" component={Lyrics} />
           <Route path="/404" component={NotFound} />
           {/* Final fallback route */}
           <Route component={NotFound} />
