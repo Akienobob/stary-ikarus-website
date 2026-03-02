@@ -159,9 +159,52 @@ export default function Media() {
           <div className="h-1 w-24 bg-gradient-to-r from-accent to-accent/50 rounded-full" />
         </motion.div>
 
-        {/* Photo Gallery Section */}
+        {/* Videos Section */}
         <motion.section
           className="mb-16 md:mb-24"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 className="section-title mb-12" variants={itemVariants}>
+            <div className="flex items-center gap-3">
+              <Video className="w-8 h-8 text-accent" />
+              {language === 'ru' ? 'Видео' : 'Videos'}
+            </div>
+          </motion.h2>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+          >
+            {videoItems.map((video, index) => (
+              <motion.div
+                key={index}
+                className="group relative overflow-hidden rounded-lg aspect-video"
+                variants={itemVariants}
+              >
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${video.videoId}`}
+                  title={video.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="rounded-lg"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
+
+        {/* Divider */}
+        <div className="meander-divider my-16 md:my-24" />
+
+        {/* Photo Gallery Section */}
+        <motion.section
+          className="pt-16 md:pt-24"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -286,48 +329,7 @@ export default function Media() {
           </motion.div>
         )}
 
-        {/* Divider */}
-        <div className="meander-divider my-16 md:my-24" />
 
-        {/* Videos Section */}
-        <motion.section
-          className="pt-16 md:pt-24"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.h2 className="section-title mb-12" variants={itemVariants}>
-            <div className="flex items-center gap-3">
-              <Video className="w-8 h-8 text-accent" />
-              {language === 'ru' ? 'Видео' : 'Videos'}
-            </div>
-          </motion.h2>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-          >
-            {videoItems.map((video, index) => (
-              <motion.div
-                key={index}
-                className="group relative overflow-hidden rounded-lg aspect-video"
-                variants={itemVariants}
-              >
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${video.videoId}`}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="rounded-lg"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-        </motion.section>
       </div>
     </div>
   );
