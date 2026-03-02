@@ -710,15 +710,29 @@ export default function Lyrics() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const { language } = useLanguage();
 
-  // Только русская версия
+  // Английская версия
   if (language !== 'ru') {
     return (
       <div className="min-h-screen py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-3xl">
-          <h1 className="section-title text-4xl md:text-5xl mb-8">Lyrics</h1>
-          <p className="text-foreground/80 text-lg">
-            This page is only available in Russian.
-          </p>
+          <motion.div
+            className="mb-12"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="section-title text-4xl md:text-5xl mb-8">Lyrics</h1>
+            <div className="h-1 w-24 bg-gradient-to-r from-accent to-accent/50 rounded-full" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <p className="text-foreground/80 text-lg leading-relaxed">
+              All songs by Stary Ikarus are written in Russian. The lyrics are currently available in their original language. English translations may follow in the future.
+            </p>
+          </motion.div>
         </div>
       </div>
     );
