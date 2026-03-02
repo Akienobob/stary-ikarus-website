@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Mail, Instagram, Youtube, Music } from 'lucide-react';
+import { Mail, Instagram, Youtube } from 'lucide-react';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -15,7 +15,7 @@ export default function Footer() {
               STARY IKARUS
             </div>
             <p className="text-foreground/70 text-xs sm:text-sm leading-relaxed">
-              {t('footer.design')}
+              Omnia possideat, non possidet aera Minos(©)
             </p>
           </div>
 
@@ -26,7 +26,7 @@ export default function Footer() {
             </h3>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/staryikarus/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-accent transition-colors duration-300"
@@ -34,20 +34,12 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@starikarus"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/60 hover:text-accent transition-colors duration-300"
               >
                 <Youtube className="w-5 h-5" />
-              </a>
-              <a
-                href="https://bandcamp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-foreground/60 hover:text-accent transition-colors duration-300"
-              >
-                <Music className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -58,11 +50,11 @@ export default function Footer() {
               {t('contacts.booking')}
             </h3>
             <a
-              href="mailto:booking@staryikarus.com"
+              href="mailto:info@starikarus.de"
               className="text-foreground/70 hover:text-accent transition-colors duration-300 flex items-center gap-2 text-xs sm:text-sm"
             >
               <Mail className="w-4 h-4 flex-shrink-0" />
-              <span className="break-all">booking@staryikarus.com</span>
+              <span className="break-all">info@starikarus.de</span>
             </a>
           </div>
         </div>

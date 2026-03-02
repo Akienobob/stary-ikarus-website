@@ -105,13 +105,12 @@ export default function About() {
             {t('about.section2_title')}
           </motion.h2>
           <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" variants={itemVariants}>
-            <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5">
-              <div className="text-center">
-                <div className="text-5xl sm:text-6xl mb-4">🎵</div>
-                <p className="text-foreground/60 text-xs sm:text-sm">
-                  Музыка как язык души
-                </p>
-              </div>
+            <div className="glass-card flex items-center justify-center min-h-48 sm:min-h-64 bg-gradient-to-br from-accent/10 to-accent/5 overflow-hidden">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663375501955/4pPxt6BesnJdqhWZbjbdiu/ChatGPTImage2.März2026,05_54_39_95260f41.png"
+                alt="Философия музыки"
+                className="w-full h-full object-cover"
+              />
             </div>
             <p className="text-foreground/80 text-sm sm:text-base md:text-lg leading-relaxed whitespace-pre-line">
               {t('about.section2_text')}
