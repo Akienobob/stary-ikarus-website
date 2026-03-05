@@ -728,8 +728,16 @@ export default function Lyrics() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8"
           >
-            <p className="text-foreground/80 text-lg leading-relaxed">
+            <div className="flex justify-center">
+              <img
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663375501955/UkmovLAnqSlzmFGw.png"
+                alt="Words take flight in their original language"
+                className="w-full max-w-md h-auto"
+              />
+            </div>
+            <p className="text-foreground/80 text-lg leading-relaxed text-center italic">
               All songs by Stary Ikarus are written in Russian. The lyrics are currently available in their original language. English translations may follow in the future.
             </p>
           </motion.div>
