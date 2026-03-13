@@ -200,6 +200,13 @@ export default function About() {
                 {member}
               </motion.p>
             ))}
+            {/* Note about Lev Marchenko */}
+            <motion.p
+              className="text-foreground/60 text-xs sm:text-sm md:text-base leading-relaxed pt-4 sm:pt-6 italic"
+              variants={itemVariants}
+            >
+              {t('about.lev_note')}
+            </motion.p>
           </motion.div>
         </motion.section>
       </div>
