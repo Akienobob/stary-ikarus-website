@@ -47,12 +47,35 @@ export default function Contacts() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success(t('contacts.form_success'));
-      setFormData({ name: '', email: '', subject: '', message: '' });
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '7d7efc1e-07c1-47f6-95c2-79590f8951b2',
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success(t('contacts.form_success'));
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        toast.error('Ошибка при отправке формы. Попробуйте позже.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error('Ошибка при отправке формы. Попробуйте позже.');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
